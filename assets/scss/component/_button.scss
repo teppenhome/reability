@@ -103,6 +103,10 @@
   &--outline-line {
     --btn-color: #{$color-line-green};
     --btn-border: #{$color-line-green};
+
+    &:hover .c-btn__lead-icon--line {
+      background: url('../images/line-white.png') no-repeat center / contain;
+    }
   }
 
   &--outline-lime {

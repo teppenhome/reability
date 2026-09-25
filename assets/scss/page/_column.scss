@@ -101,7 +101,16 @@
 
     .c-btn {
       --btn-bg: transparent;
+      --btn-hover-bg: #{$color-navy};
+      --btn-hover-color: #{$color-white};
+      --btn-hover-border: #{$color-navy};
       background: transparent;
+
+      &:hover {
+        background: $color-navy;
+        color: $color-white;
+        border-color: $color-navy;
+      }
     }
   }
 
