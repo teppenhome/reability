@@ -1,0 +1,51 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// 写真ボックス(画像がなくても枠の大きさが保たれる)
+.c-photo {
+  position: relative;
+  overflow: hidden;
+  @include photo-bg;
+
+  img {
+    @include cover-img;
+  }
+}
+
+// 写真 + ずらしたグラデーション背景
+.c-photo-frame {
+  position: relative;
+  isolation: isolate;
+  align-self: flex-start;
+  width: 448px;
+  max-width: 100%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: $radius-card;
+    background: $gradient-main;
+    transform: translate(25px, 25px);
+  }
+
+  .c-photo {
+    aspect-ratio: 448 / 547;
+    border-radius: $radius-card;
+  }
+
+  &--trainer {
+    width: 449px;
+
+    .c-photo {
+      aspect-ratio: 449 / 511;
+    }
+  }
+
+  @include sp {
+    &::before {
+      transform: translate(12px, 12px);
+    }
+  }
+}

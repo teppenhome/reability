@@ -1,0 +1,17 @@
+@use '../foundation/mixins' as *;
+
+// 本文テキスト
+.c-text {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.9;
+
+  p + p {
+    margin-top: 1.1em;
+  }
+
+  @include sp {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+}

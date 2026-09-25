@@ -1,0 +1,801 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// 料金案内
+.p-price {
+  padding: 100px 0 123px;
+  background: $color-bg-gray;
+  font-family: $font-zen-kaku;
+
+  .c-heading__ja {
+    margin-top: -100px;
+  }
+
+  // 共通:数字・円・スラッシュ ------------------------------
+  &__num {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    line-height: 1;
+
+    &--md {
+      font-size: 42px;
+      font-weight: 600;
+    }
+
+    &--sm {
+      font-size: 32px;
+      font-weight: 400;
+    }
+
+    &--lg {
+      font-size: 44px;
+      font-weight: 700;
+    }
+
+    &--plan {
+      font-size: 40px;
+      font-weight: 300;
+    }
+  }
+
+  &__yen {
+    margin-left: 4px;
+    font-size: 18px;
+
+    &--sm {
+      font-size: 14px;
+    }
+  }
+
+  &__slash {
+    display: inline-block;
+    width: 1px;
+    height: 24px;
+    margin: 0 22px;
+    background: currentColor;
+    transform: rotate(20deg);
+    vertical-align: middle;
+
+    &--lg {
+      height: 44px;
+      margin: 0 24px;
+    }
+  }
+
+  // チェックリスト -----------------------------------
+  &__checklist {
+    display: grid;
+    gap: 8px;
+    font-family: $font-serif;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.6;
+
+    li {
+      position: relative;
+      padding-left: 30px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.45em;
+        width: 18px;
+        height: 14px;
+        background: $color-main;
+        @include mask-icon('check');
+      }
+    }
+
+    &--white li::before {
+      background: $color-white;
+    }
+
+    &--personal {
+      font-size: 16px;
+    }
+  }
+
+  // 体験レッスン ---------------------------------------
+  &__trial {
+    display: grid;
+    grid-template-columns: 448px 1fr;
+    margin-top: 60px;
+  }
+
+  &__trial-photo {
+    height: 440px;
+  }
+
+  &__trial-body {
+    padding: 42px 62px 36px 52px;
+  }
+
+  &__trial-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba($color-text, 0.25);
+  }
+
+  &__trial-title {
+    font-family: $font-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  &__trial-time {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+  }
+
+  &__trial-price {
+    display: flex;
+    align-items: center;
+    margin-top: 14px;
+  }
+
+  &__trial-first {
+    margin-right: 14px;
+    font-family: $font-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  &__trial-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 256px;
+    height: 56px;
+    margin-right: 19px;
+    border-radius: 15px;
+    background: $color-green;
+    color: $color-white;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    box-shadow: $shadow-btn;
+    transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+    border: 2px solid $color-green;
+
+    &:hover {
+      background: $color-white;
+      color: $color-green;
+    }
+  }
+
+  &__trial-belongings {
+    margin-top: 18px;
+  }
+
+  &__trial-sub {
+    margin-bottom: 12px;
+    font-family: $font-serif;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &__trial-note {
+    margin: 6px 0 0 30px;
+    font-family: $font-serif;
+    font-size: 14px;
+    color: rgba($color-text, 0.65);
+  }
+
+  // 会員登録 ------------------------------------------
+  &__member {
+    position: relative;
+    margin-top: 104px;
+  }
+
+  &__member-title {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  // 「今なら入会金半額!」の爆発バナー
+  &__campaign {
+    position: absolute;
+    top: -11px;
+    right: 19px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 464px;
+    height: 90px;
+    background: url('../images/price-campaign-burst.svg') no-repeat center / 100% 100%;
+    color: $color-white;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 22%;
+      width: 70px;
+      height: 60px;
+      background: url('../images/price-deco.png') no-repeat center / contain;
+      pointer-events: none;
+    }
+
+    &::before {
+      left: 16px;
+      transform: translateY(-50%) scaleX(-1);
+    }
+
+    &::after {
+      right: 16px;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__campaign-em {
+    font-size: 30px;
+  }
+
+  &__campaign-em--strong {
+    font-size: 32px;
+  }
+
+  // 料金テーブル
+  &__table {
+    margin-top: 10px;
+    overflow: visible; // オープン記念バッジがカードの外へはみ出す
+  }
+
+  &__admission {
+    position: relative;
+    display: grid;
+    grid-template-columns: 680px minmax(0, 1fr);
+    align-items: center;
+    height: 100px;
+    border-radius: $radius-card $radius-card 0 0;
+    background: $color-main;
+    color: $color-white;
+  }
+
+  &__admission-old {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+    padding-left: 0;
+  }
+
+  &__admission-label {
+    margin-right: 8px;
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  &__admission-note {
+    margin-left: 6px;
+    font-size: 20px;
+  }
+
+  &__admission-arrow {
+    position: absolute;
+    left: 663px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+  }
+
+  &__admission-new {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding-left: 96px;
+    margin-top: 4px;
+  }
+
+  &__admission-price {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    padding-bottom: 14px;
+    background: url('../images/underline-pink.svg') no-repeat center bottom / 100% 10px;
+  }
+
+  &__admission-until {
+    margin-left: 12px;
+    font-size: 14px;
+  }
+
+  &__plans {
+    display: grid;
+    grid-template-columns: 680px minmax(0, 1fr);
+    min-height: 534px;
+  }
+
+  &__plan {
+    position: relative;
+
+    & + & {
+      border-left: 2px solid rgba($color-cyan, 0.5);
+    }
+  }
+
+  &__plan-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    font-size: 22px;
+    font-weight: 500;
+    background: $color-bg-light;
+  }
+
+  &__plan--gym &__plan-head {
+    background: $color-mint;
+  }
+
+  &__plan-body {
+    position: relative;
+    padding: 36px 50px 40px;
+    text-align: center;
+  }
+
+  &__plan--gym &__plan-body {
+    padding-top: 146px;
+  }
+
+  &__plan-price {
+    line-height: 1.2;
+  }
+
+  &__plan-lead {
+    margin-top: 16px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &__studio-box {
+    position: relative;
+    width: 580px;
+    max-width: 100%;
+    margin: 30px 0 0;
+    padding: 24px 24px 20px 50px;
+    border-radius: 10px;
+    background: rgba($color-cyan, 0.78);
+    text-align: left;
+    color: $color-navy;
+  }
+
+  &__studio-title {
+    margin-bottom: 10px;
+    font-family: $font-serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  &__studio-now {
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  &__studio-note {
+    margin-top: 18px;
+    font-family: $font-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: $color-red;
+  }
+
+  // 写真(ナミナミ透過PNG)
+  &__studio-star {
+    position: absolute;
+    top: -44px;
+    right: -44px;
+    width: 189px;
+    height: 153px;
+    overflow: visible;
+    background: transparent;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__schedule {
+    margin: 26px 0 0 50px;
+  }
+
+  // オープン記念バッジ
+  &__open {
+    position: absolute;
+    top: 50px;
+    left: clamp(-126px, calc((100vw - 1120px) / -2 + 8px), 0px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 235px;
+    height: 153px;
+    padding: 4px 16px 32px;
+    background: url('../images/price-open-badge.png') no-repeat center / 100% 100%;
+    color: $color-white;
+    font-family: $font-serif;
+    font-weight: 900;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 22%;
+      width: 70px;
+      height: 60px;
+      background: url('../images/price-deco.png') no-repeat center / contain;
+      pointer-events: none;
+    }
+
+    &::before {
+      left: -16px;
+      transform: translateY(-50%) scaleX(-1);
+    }
+
+    &::after {
+      right: -16px;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__open-main {
+    font-size: 20px;
+    line-height: 1.5;
+    transform: translate(6px, 10px);
+  }
+
+  &__open-sub {
+    font-size: 13px;
+    line-height: 1.6;
+    transform: translate(6px, 10px);
+  }
+
+  // ビジター / パーソナル --------------------------------
+  &__others {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 104px;
+  }
+
+  &__other {
+    overflow: hidden;
+    border-radius: $radius-card;
+    background: $color-white;
+    box-shadow: $shadow-card;
+  }
+
+  &__other-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+    background: $color-main;
+    color: $color-white;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  &__other-body {
+    padding: 27px 22px 31px;
+  }
+
+  &__visitor-row {
+    padding: 8px 0 22px;
+    text-align: center;
+
+    & + & {
+      padding-top: 26px;
+      border-top: 1px solid rgba($color-text, 0.35);
+    }
+
+    dt {
+      margin-bottom: 8px;
+      font-family: $font-serif;
+      font-size: 22px;
+      font-weight: 500;
+    }
+  }
+
+  &__personal-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    padding: 28px 0 26px;
+    border-bottom: 1px solid rgba($color-text, 0.35);
+  }
+
+  &__personal-time {
+    font-size: 26px;
+    font-weight: 500;
+  }
+
+  &__other--personal &__checklist {
+    margin: 24px 0 0 26px;
+  }
+
+  // Tablet / Smartphone 共通:テーブルを縦積みに --------------------
+  @include tb {
+    padding: 80px 0 96px;
+
+    &__trial {
+      grid-template-columns: 38% 1fr;
+    }
+
+    &__trial-photo {
+      height: auto;
+      min-height: 100%;
+    }
+
+    &__trial-body {
+      padding: 32px 32px 28px;
+    }
+
+    &__trial-btn {
+      width: 200px;
+      margin-right: 0;
+    }
+
+    &__member {
+      margin-top: 96px;
+    }
+
+    &__member-title {
+      text-align: left;
+    }
+
+    // 爆発バナーは見出しの下に通常配置
+    &__campaign {
+      position: relative;
+      top: auto;
+      right: auto;
+      width: min(100%, 380px);
+      height: 80px;
+      margin: 16px auto 0;
+      font-size: 22px;
+
+      &::before,
+      &::after {
+        width: 56px;
+        height: 48px;
+      }
+    }
+
+    &__table {
+      margin-top: 16px;
+    }
+
+    &__admission {
+      grid-template-columns: minmax(0, 1fr);
+      justify-items: center;
+      height: auto;
+      padding: 20px 16px;
+      gap: 6px;
+    }
+
+    &__admission-arrow {
+      position: static;
+      transform: rotate(90deg);
+      font-size: 22px;
+    }
+
+    &__admission-new {
+      padding-left: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    &__plans {
+      grid-template-columns: minmax(0, 1fr);
+      min-height: 0;
+    }
+
+    &__plan + &__plan {
+      border-left: 0;
+      border-top: 2px solid rgba($color-cyan, 0.5);
+    }
+
+    &__plan-head {
+      height: auto;
+      min-height: 48px;
+      padding: 8px 12px;
+      font-size: 20px;
+    }
+
+    &__plan-body,
+    &__plan--gym &__plan-body {
+      padding: 28px 24px 32px;
+    }
+
+    &__plan--all &__plan-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__studio-box {
+      margin-top: 24px;
+      padding: 24px 170px 20px 32px;
+    }
+
+    // 写真(雲形)はボックス右にはみ出さず内側に収める
+    &__studio-star {
+      top: -20px;
+      right: 16px;
+    }
+
+    &__schedule {
+      margin: 20px auto 0;
+    }
+
+    // オープン記念バッジ:カードの外にはみ出さず、上に配置
+    &__open {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 200px;
+      height: 130px;
+      margin: 0 auto 20px;
+      order: -1;
+    }
+
+    &__others {
+      margin-top: 72px;
+    }
+  }
+
+  // Smartphone ----------------------------------------
+  @include sp {
+    padding: 56px 0 72px;
+
+    &__trial {
+      grid-template-columns: 1fr;
+    }
+
+    &__trial-photo {
+      aspect-ratio: 16 / 10;
+    }
+
+    &__trial-body {
+      padding: 24px 20px 24px;
+    }
+
+    &__trial-title {
+      font-size: 20px;
+    }
+
+    &__trial-head {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+    }
+
+    &__trial-btn {
+      width: 100%;
+    }
+
+    &__num--md {
+      font-size: 36px;
+    }
+
+    &__member {
+      margin-top: 64px;
+    }
+
+    &__member-title {
+      font-size: 22px;
+    }
+
+    &__campaign {
+      height: 72px;
+      font-size: 18px;
+
+      &::before,
+      &::after {
+        width: 48px;
+        height: 41px;
+      }
+    }
+
+    &__campaign-em {
+      font-size: 22px;
+    }
+
+    &__campaign-em--strong {
+      font-size: 24px;
+    }
+
+    &__admission-label {
+      font-size: 18px;
+    }
+
+    &__admission-note {
+      font-size: 14px;
+    }
+
+    &__num--sm {
+      font-size: 26px;
+    }
+
+    &__num--lg {
+      font-size: 38px;
+    }
+
+    &__plan-head {
+      font-size: 17px;
+    }
+
+    &__plan-body,
+    &__plan--gym &__plan-body {
+      padding: 24px 16px 28px;
+    }
+
+    &__num--plan {
+      font-size: 34px;
+    }
+
+    &__plan-lead {
+      font-size: 16px;
+    }
+
+    &__studio-box {
+      padding: 22px 16px 16px;
+    }
+
+    &__studio-title {
+      font-size: 20px;
+    }
+
+    &__checklist {
+      font-size: 15px;
+    }
+
+    &__studio-star {
+      position: relative;
+      top: auto;
+      right: auto;
+      width: 150px;
+      height: 120px;
+      margin: 12px auto -4px;
+    }
+
+    &__others {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    &__other-head {
+      height: 64px;
+      font-size: 18px;
+    }
+
+    &__other--personal &__checklist {
+      margin-left: 0;
+    }
+
+    &__personal-time {
+      font-size: 20px;
+    }
+  }
+}

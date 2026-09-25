@@ -1,0 +1,60 @@
+// ==========================================================
+// Variables
+// ==========================================================
+
+// Color ------------------------------------------------------
+$color-main: #1063a1;        // メインブルー
+$color-navy: #0a416b;        // 濃紺(見出し・枠線)
+$color-blue-mid: #2e93c3;    // 中間ブルー(番号・カード下部)
+$color-cyan: #4bc3e5;        // シアン(ボタン・アクセント)
+$color-sky: #aae7f9;         // 薄い水色(セクション背景)
+$color-green: #87bd72;       // グリーン(ボタン)
+$color-lime: #a8d85d;        // ライム(SERVICE見出し・枠線)
+$color-mint: #e6f5d5;        // 薄い黄緑(セクション背景)
+$color-pink: #f55b96;        // ピンク(アクセント)
+$color-line-green: #22683f;  // LINE ボタン
+$color-red: #c70404;         // 注意書き
+
+$color-text: #25384a;        // 本文
+$color-text-sub: rgba(37, 56, 74, 0.8);
+$color-black: #000;
+$color-white: #fff;
+
+$color-bg-light: #eaf7fb;    // 薄い水色背景
+$color-bg-gray: #f5f5f5;
+
+// Gradient ----------------------------------------------------
+$gradient-main: linear-gradient(111deg, #4bc3e5 0.67%, #4bc3e5 38.44%, #87bd72 100%);
+$gradient-navy: linear-gradient(136deg, #1063a1 15.29%, #4bc3e5 99.53%);
+$gradient-panel: linear-gradient(180deg, #2e93c3 0%, #0a416b 99.32%);
+$gradient-lead: linear-gradient(167deg, #1063a1 0.67%, #1063a1 50.81%, #4bc3e5 100%);
+
+// Font --------------------------------------------------------
+$font-base: 'Inter', 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+$font-zen-kaku: 'Zen Kaku Gothic New', 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+$font-zen-maru: 'Zen Maru Gothic', 'Noto Sans JP', 'Hiragino Maru Gothic ProN', sans-serif;
+$font-serif: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+$font-en: 'Caveat', cursive;
+
+// Layout ------------------------------------------------------
+$design-width: 1600;         // デザイン基準幅
+$container-width: 1120px;    // コンテンツ幅
+$container-gutter: 24px;     // 画面が狭いときの左右余白
+$container-gutter-sp: 20px;
+$header-height: 100px;
+$header-height-sp: 64px;
+
+// Breakpoint --------------------------------------------------
+$bp-tb: 1199px;              // これ以下:タブレット
+$bp-sp: 767px;               // これ以下:スマートフォン
+
+// Radius / Shadow --------------------------------------------
+$radius-btn: 20px;
+$radius-card: 20px;
+$shadow-btn: 4px 4px 9.3px rgba(0, 0, 0, 0.1);
+$shadow-card: 4px 4px 25px rgba(0, 0, 0, 0.05);
+
+// z-index -----------------------------------------------------
+$z-header: 100;
+$z-drawer: 90;
+$z-illust: 2;

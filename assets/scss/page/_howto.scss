@@ -1,0 +1,188 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// 動画でわかるマシンの使い方
+.p-howto {
+  position: relative;
+  padding: 100px 0 108px;
+  background: $gradient-navy;
+  color: $color-white;
+
+  .c-heading__ja {
+    margin-top: -100px;
+  }
+
+  &__lead {
+    max-width: 1080px;
+    margin-top: 28px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.9;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 256px);
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 43px;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    background: $color-white;
+    box-shadow: 4px 4px 27.9px rgba(0, 0, 0, 0.05);
+    color: $color-black;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+
+  &__thumb {
+    position: relative;
+    display: block;
+    height: 170px;
+    overflow: hidden;
+    background: rgba($color-main, 0.12);
+
+    > img:first-child {
+      @include cover-img;
+    }
+  }
+
+  &__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 49px;
+    height: 49px;
+    transform: translate(-50%, -50%);
+    background: none;
+  }
+
+  &__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 16px 12px 16px;
+  }
+
+  &__title {
+    min-height: 3.2em;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  &__desc {
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba($color-black, 0.6);
+  }
+
+  &__meta {
+    margin-top: auto;
+    padding-top: 16px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &__action {
+    display: flex;
+    justify-content: center;
+    margin-top: 86px;
+  }
+
+  // 自転車のイラスト(上の施設紹介セクションに少しはみ出す)
+  &__illust {
+    position: absolute;
+    top: -55px;
+    left: calc(50% + 129px);
+    z-index: $z-illust;
+    width: 266px;
+    height: auto;
+    aspect-ratio: 266 / 269;
+    pointer-events: none;
+    background: none;
+  }
+
+  // Tablet ---------------------------------------------
+  @include tb {
+    padding: 80px 0 96px;
+
+    &__list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    &__illust {
+      display: none;
+    }
+  }
+
+  // Smartphone ----------------------------------------
+  @include sp {
+    padding: 56px 0 64px;
+
+    &__lead {
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
+    // 横並びカード(サムネイル左 / テキスト右)
+    &__list {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    &__card {
+      flex-direction: row;
+    }
+
+    &__thumb {
+      flex: none;
+      width: 120px;
+      height: auto;
+    }
+
+    &__play {
+      width: 36px;
+      height: 36px;
+    }
+
+    &__body {
+      padding: 12px;
+    }
+
+    &__title {
+      min-height: 0;
+      font-size: 15px;
+    }
+
+    &__desc {
+      font-size: 13px;
+    }
+
+    &__meta {
+      padding-top: 10px;
+      font-size: 12px;
+    }
+
+    &__action {
+      margin-top: 36px;
+    }
+  }
+}

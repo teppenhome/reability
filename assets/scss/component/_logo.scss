@@ -1,0 +1,47 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// ロゴ:マーク + 「Ｒｅ：」 + 「アビリティ」
+.c-logo {
+  --logo-scale: 1;
+  position: relative;
+  display: inline-block;
+  width: calc(218px * var(--logo-scale));
+  height: calc(96px * var(--logo-scale));
+  color: $color-white;
+  line-height: 1;
+
+  &__mark {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(79px * var(--logo-scale));
+    height: calc(96px * var(--logo-scale));
+    object-fit: contain;
+    background: none;
+  }
+
+  &__re {
+    position: absolute;
+    left: calc(63px * var(--logo-scale));
+    top: calc(55px * var(--logo-scale));
+    transform: translateY(-50%);
+    font-family: Arial, 'Helvetica Neue', sans-serif;
+    font-size: calc(25px * var(--logo-scale));
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: calc(-8px * var(--logo-scale));
+    white-space: nowrap;
+  }
+
+  &__name {
+    position: absolute;
+    left: calc(119px * var(--logo-scale));
+    top: calc(55px * var(--logo-scale));
+    transform: translateY(-50%);
+    font-size: calc(20px * var(--logo-scale));
+    font-weight: 800;
+    color: $color-pink;
+    white-space: nowrap;
+  }
+}

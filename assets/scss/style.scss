@@ -1,0 +1,45 @@
+// ==========================================================
+// Re:アビリティ  style.scss
+// 読み込み順: foundation → component → layout → page
+// ==========================================================
+
+// foundation
+@use 'foundation/reset';
+@use 'foundation/base';
+
+// component
+@use 'component/logo';
+@use 'component/heading';
+@use 'component/button';
+@use 'component/pill';
+@use 'component/photo';
+@use 'component/text';
+@use 'component/arrows';
+@use 'component/card';
+@use 'component/schedule-link';
+
+// layout(component の上書きを含むため component の後に読み込む)
+@use 'layout/container';
+@use 'layout/header';
+@use 'layout/footer';
+
+// page (トップページの各セクション)
+@use 'page/hero';
+@use 'page/worry';
+@use 'page/about';
+@use 'page/features';
+@use 'page/service';
+@use 'page/first-visit';
+@use 'page/studio';
+@use 'page/price';
+@use 'page/facility';
+@use 'page/howto';
+@use 'page/voice';
+@use 'page/faq';
+@use 'page/cta';
+@use 'page/access';
+@use 'page/instagram';
+@use 'page/column';
+
+// animation(data-anim + IntersectionObserver)
+@use 'foundation/animation';

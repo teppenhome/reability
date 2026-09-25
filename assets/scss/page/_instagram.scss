@@ -1,0 +1,112 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// Instagram(左右に画面端まで広がる帯)
+.p-instagram {
+  padding: 100px 0 120px;
+  background: $color-bg-gray;
+
+  .c-heading__ja {
+    margin-top: -100px;
+  }
+
+  &__scroller {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+    flex: none;
+    gap: 32px;
+  }
+
+  &__item {
+    flex: none;
+    width: 256px;
+    height: 256px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #d9d9d9;
+
+    a {
+      display: block;
+      height: 100%;
+      transition: opacity 0.2s;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    img {
+      @include cover-img;
+    }
+  }
+
+  &__action {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+
+    .c-btn {
+      min-width: 364px;
+      gap: 24px;
+
+      .c-btn__lead-icon {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+
+  @include tb {
+    padding: 80px 0 96px;
+
+    &__scroller {
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding: 0 24px 12px;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: 24px;
+    }
+
+    &__list {
+      gap: 16px;
+    }
+
+    &__item {
+      scroll-snap-align: start;
+    }
+  }
+
+  @include sp {
+    padding: 56px 0 64px;
+
+    &__scroller {
+      margin-top: 28px;
+      padding-inline: 20px;
+      scroll-padding-inline: 20px;
+    }
+
+    &__list {
+      gap: 10px;
+    }
+
+    &__item {
+      width: 148px;
+      height: 148px;
+    }
+
+    &__action {
+      margin-top: 32px;
+
+      .c-btn {
+        min-width: 0;
+        width: 100%;
+      }
+    }
+  }
+}

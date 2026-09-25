@@ -1,0 +1,80 @@
+// ==========================================================
+// Mixins
+// ==========================================================
+@use 'sass:math';
+@use 'variables' as *;
+@use 'functions' as *;
+@use 'icons' as *;
+
+// Media query ------------------------------------------------
+@mixin tb {
+  @media (max-width: #{$bp-tb}) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media (max-width: #{$bp-sp}) {
+    @content;
+  }
+}
+
+// PCのみ(タブレット幅より上)
+@mixin pc {
+  @media (min-width: #{$bp-tb + 1}) {
+    @content;
+  }
+}
+
+// 流体フォントサイズ:1600px以上で $px、狭くなると最大 $min-ratio 倍まで縮小
+@mixin fluid-fs($px, $min-ratio: 0.72) {
+  font-size: clamp(#{math.round($px * $min-ratio)}px, #{vw($px)}, #{$px}px);
+}
+
+// 流体サイズ(任意プロパティ)
+@mixin fluid($prop, $px, $min-ratio: 0.6) {
+  #{$prop}: clamp(#{math.round($px * $min-ratio)}px, #{vw($px)}, #{$px}px);
+}
+
+// 画面幅いっぱいに広げる(コンテナ内から)
+@mixin full-bleed {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+}
+
+// テキスト非表示(画像置換用)
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// マスクでアイコンを描画(色は background-color で指定)。$name は foundation/_icons.scss のキー
+@mixin mask-icon($name, $size: contain) {
+  -webkit-mask: icon($name) no-repeat center / #{$size};
+  mask: icon($name) no-repeat center / #{$size};
+}
+
+// 写真ボックス内の画像を枠いっぱいに敷く(画像未配置でも枠の大きさは保たれる)
+@mixin cover-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// 写真プレースホルダー背景(画像が無いときにも枠が見えるように)
+@mixin photo-bg {
+  background-color: rgba($color-main, 0.08);
+}
+
+// 英字見出し用のぼかし文字
+@mixin blur-text($blur: 4px) {
+  filter: blur($blur);
+}

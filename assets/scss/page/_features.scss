@@ -1,0 +1,165 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// Re:アビリティの3つの特徴
+.p-features {
+  padding: 120px 0 200px;
+  background: $color-sky;
+
+  .c-heading__ja {
+    margin-top: -100px;
+  }
+
+  &__list {
+    display: grid;
+    gap: 37px;
+    margin-top: 9px;
+  }
+
+  &__item {
+    position: relative;
+    height: 388px;
+  }
+
+  // 楕円の写真(カードの上に少し重なる)
+  &__photo {
+    position: absolute;
+    top: 0;
+    left: 762px;
+    z-index: 1;
+    width: 284px;
+    height: 210px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba($color-main, 0.1);
+
+    img {
+      @include cover-img;
+    }
+  }
+
+  // 白い平行四辺形のカード
+  &__card {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 227px;
+    padding: 46px 100px 0 160px;
+    background: $color-white;
+    clip-path: polygon(58px 0, 100% 0, calc(100% - 58px) 100%, 0 100%);
+  }
+
+  &__num {
+    position: absolute;
+    left: 56px;
+    top: 4px;
+    font-family: $font-en;
+    font-size: 128px;
+    font-weight: 500;
+    line-height: 1;
+    color: $color-blue-mid;
+  }
+
+  &__heading {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: $color-navy;
+  }
+
+  &__text {
+    margin-top: 14px;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  // Tablet ---------------------------------------------
+  @include tb {
+    padding: 88px 0 120px;
+
+    &__list {
+      gap: 24px;
+    }
+
+    &__item {
+      height: 360px;
+    }
+
+    &__photo {
+      left: auto;
+      right: 8%;
+      width: 240px;
+      height: 178px;
+    }
+
+    &__card {
+      height: 220px;
+      padding: 40px 72px 0 116px;
+      clip-path: polygon(40px 0, 100% 0, calc(100% - 40px) 100%, 0 100%);
+    }
+
+    &__num {
+      left: 44px;
+      font-size: 100px;
+    }
+
+    &__heading {
+      font-size: 24px;
+    }
+
+    &__text {
+      font-size: 17px;
+    }
+  }
+
+  // Smartphone: 写真を上、カードを下の縦積み ----------------------
+  @include sp {
+    padding: 56px 0 72px;
+
+    &__list {
+      gap: 32px;
+      margin-top: 24px;
+    }
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      height: auto;
+    }
+
+    &__photo {
+      position: relative;
+      left: auto;
+      right: auto;
+      width: 200px;
+      height: 148px;
+      margin-bottom: -28px;
+    }
+
+    &__card {
+      position: relative;
+      width: 100%;
+      height: auto;
+      padding: 40px 28px 28px 68px;
+      clip-path: polygon(24px 0, 100% 0, calc(100% - 24px) 100%, 0 100%);
+    }
+
+    &__num {
+      left: 18px;
+      top: 22px;
+      font-size: 64px;
+    }
+
+    &__heading {
+      font-size: 17px;
+    }
+
+    &__text {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+  }
+}

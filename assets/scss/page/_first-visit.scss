@@ -1,0 +1,241 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// はじめての方へ
+.p-first-visit {
+  position: relative;
+  padding: 100px 0 0;
+  background: $color-mint;
+  overflow: hidden;
+
+  .c-heading__ja {
+    margin-top: -100px;
+  }
+
+  &__steps {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 256px);
+    gap: 32px;
+    justify-content: space-between;
+    margin-top: 98px;
+  }
+
+  &__step {
+    position: relative;
+
+    // ステップ間の二重矢印
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 62px;
+      right: -50px;
+      z-index: 1;
+      width: 72px;
+      height: 56px;
+      background: url('../images/visit-arrow.png') no-repeat center / contain;
+      animation: p-first-visit-arrow 2.4s ease-in-out infinite;
+    }
+
+    &:nth-child(1)::after {
+      animation-delay: 0s;
+    }
+
+    &:nth-child(2)::after {
+      animation-delay: 0.8s;
+    }
+
+    &:nth-child(3)::after {
+      animation-delay: 1.6s;
+    }
+  }
+
+  &__image {
+    height: 180px;
+    background: $color-bg-gray;
+
+    img {
+      @include cover-img;
+      object-fit: contain;
+    }
+  }
+
+  &__label {
+    margin-top: 18px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  &__btn {
+    margin-top: 8px;
+    min-width: 256px;
+  }
+
+  &__help {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    margin-top: 40px;
+    margin-left: 400px;
+    height: 211px;
+
+    // スタッフと吹き出しをつなぐ線(support と同じ)
+    &::after {
+      content: '';
+      position: absolute;
+      left: 148px;
+      top: 18%;
+      z-index: 2;
+      width: 80px;
+      height: 56px;
+      background: url('../images/bubble-tail.svg') no-repeat center / 100% 100%;
+      pointer-events: none;
+    }
+  }
+
+  &__staff {
+    position: relative;
+    z-index: 1;
+    flex: none;
+    width: 190px;
+    height: 211px;
+    object-fit: contain;
+    background: none;
+  }
+
+  &__oval {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 450px;
+    height: 165px;
+    margin: 0 0 32px -7px;
+    padding: 0 48px 0 52px;
+    background: url('../images/bubble-oval.svg') no-repeat center / 100% 100%;
+  }
+
+  &__help-text {
+    font-family: $font-zen-maru;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.7;
+  }
+
+  // Tablet ---------------------------------------------
+  @include tb {
+    padding-top: 80px;
+
+    &__steps {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 48px;
+    }
+
+    &__step:nth-child(2n)::after {
+      display: none;
+    }
+
+    &__step:not(:last-child)::after {
+      right: -38px;
+    }
+
+    &__image {
+      height: auto;
+      aspect-ratio: 256 / 180;
+    }
+
+    &__help {
+      margin-left: 0;
+      justify-content: center;
+    }
+  }
+
+  // Smartphone ----------------------------------------
+  @include sp {
+    padding-top: 56px;
+
+    &__steps {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      margin-top: 28px;
+    }
+
+    // 矢印は縦向き(下向き)にして各ステップの下に置く
+    &__step:not(:last-child)::after,
+    &__step:nth-child(2n)::after {
+      display: block;
+      top: auto;
+      right: auto;
+      bottom: -34px;
+      left: 50%;
+      width: 28px;
+      height: 42px;
+      transform: translateX(-50%) rotate(90deg);
+    }
+
+    &__label {
+      margin-top: 12px;
+      font-size: 16px;
+    }
+
+    &__btn {
+      display: flex;
+      margin-top: 32px;
+      width: 100%;
+    }
+
+    &__help {
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+      margin-top: 40px;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    &__staff {
+      width: 130px;
+      height: auto;
+      margin-top: -8px;
+      order: 2;
+    }
+
+    &__oval {
+      order: 1;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 32px 36px;
+    }
+
+    &__help-text {
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__step:not(:last-child)::after {
+      animation: none;
+    }
+  }
+}
+
+@keyframes p-first-visit-arrow {
+  0%,
+  8% {
+    opacity: 1;
+  }
+
+  14%,
+  22% {
+    opacity: 0;
+  }
+
+  28%,
+  100% {
+    opacity: 1;
+  }
+}

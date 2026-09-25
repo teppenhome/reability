@@ -1,0 +1,16 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// 下向き矢印を3つ重ねた装飾
+.c-arrows {
+  display: block;
+  width: 66px;
+  height: 84px;
+  margin-inline: auto;
+  background: url('../images/arrow-down-triple.png') no-repeat center / contain;
+
+  @include sp {
+    width: 44px;
+    height: 56px;
+  }
+}

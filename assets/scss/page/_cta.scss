@@ -1,0 +1,97 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// 予約への導線バナー
+.p-cta {
+  padding: 93px 0 123px;
+  background: $color-main;
+  color: $color-white;
+  text-align: center;
+
+  &__eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  &__eyebrow-line {
+    display: block;
+    width: 85px;
+    height: 2px;
+    background: currentColor;
+  }
+
+  &__title {
+    margin-top: 45px;
+    font-family: $font-serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.65;
+  }
+
+  &__text {
+    margin-top: 37px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.85;
+  }
+
+  &__action {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px 54px;
+    margin-top: 72px;
+  }
+
+  @include tb {
+    padding: 72px 0 80px;
+
+    &__title {
+      font-size: 24px;
+    }
+
+    &__action {
+      gap: 20px 24px;
+    }
+  }
+
+  @include sp {
+    padding: 56px 0 64px;
+
+    &__eyebrow {
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    &__eyebrow-line {
+      width: 36px;
+    }
+
+    &__title {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+
+    &__text {
+      margin-top: 20px;
+      font-size: 14px;
+      text-align: left;
+
+      br {
+        display: none;
+      }
+    }
+
+    &__action {
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 32px;
+    }
+  }
+}

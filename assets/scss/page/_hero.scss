@@ -1,0 +1,388 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// ヒーロー(ファーストビュー)
+.p-hero {
+  --slant: 289px; // 斜めカットの水平方向のずれ(デザイン 1600px 基準)
+  position: relative;
+  height: 800px;
+  overflow: hidden;
+
+  // 背景レイヤー ---------------------------------------
+  &__bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  &__photo {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    object-fit: cover;
+    background: rgba($color-main, 0.12);
+
+    // 左の写真:右端が斜め
+    &--main {
+      left: 0;
+      width: 73%;
+      clip-path: polygon(0 0, 100% 0, calc(100% - var(--slant)) 100%, 0 100%);
+    }
+
+    // 右の写真:左端が斜め(ストライプの下まで伸ばして隙間を塞ぐ)
+    &--sub {
+      left: calc(73% - var(--slant));
+      right: 0;
+      width: auto;
+      clip-path: polygon(var(--slant) 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+
+  // 左側の薄いシアンのベール
+  &__veil {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 46.75%;
+    height: 100%;
+    background: rgba($color-cyan, 0.55);
+    clip-path: polygon(0 0, 100% 0, calc(100% - var(--slant)) 100%, 0 100%);
+  }
+
+  // 斜めのストライプ(平行四辺形)
+  &__stripe {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: calc(var(--slant) + 24px);
+    clip-path: polygon(var(--slant) 0, 100% 0, 24px 100%, 0 100%);
+
+    &--1 {
+      left: calc(48.3% - var(--slant));
+      background: rgba($color-cyan, 0.4);
+    }
+
+    &--2 {
+      left: calc(73% - var(--slant));
+      background: rgba($color-cyan, 0.4);
+    }
+  }
+
+  // 文字出現と同時に左右へ開く、同角度のアクセントライン
+  &__lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  &__line {
+    --line-w: 4px;
+    --from: -30vw;
+    --peak: 86vw;
+    --shift: 20vw;
+    --sway-dur: 4.8s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: calc(var(--slant) + var(--line-w));
+    clip-path: polygon(var(--slant) 0, 100% 0, var(--line-w) 100%, 0 100%);
+    opacity: 0;
+    transform: translate3d(var(--from), 0, 0);
+    transition: opacity 0.55s ease;
+
+    &--1 {
+      --line-w: 3px;
+      --from: -36vw;
+      --shift: -12vw;
+      --sway-dur: 4.4s;
+      background: rgba($color-main, 0.45);
+      transition-delay: 0.08s;
+      animation-delay: 0.08s;
+    }
+
+    &--2 {
+      --line-w: 8px;
+      --from: -32vw;
+      --shift: -6vw;
+      --sway-dur: 4.8s;
+      background: rgba($color-cyan, 0.34);
+      transition-delay: 0.16s;
+      animation-delay: 0.16s;
+    }
+
+    &--3 {
+      --line-w: 2px;
+      --from: -24vw;
+      --shift: 48vw;
+      --sway-dur: 5s;
+      background: rgba($color-navy, 0.42);
+      transition-delay: 0.12s;
+      animation-delay: 0.12s;
+    }
+
+    &--4 {
+      --line-w: 5px;
+      --from: -22vw;
+      --shift: 80vw;
+      --sway-dur: 5.2s;
+      background: rgba($color-blue-mid, 0.4);
+      transition-delay: 0.2s;
+      animation-delay: 0.2s;
+    }
+
+    &--5 {
+      --line-w: 14px;
+      --from: -28vw;
+      --shift: 20vw;
+      --sway-dur: 4.8s;
+      background: rgba($color-main, 0.2);
+      transition-delay: 0.1s;
+      animation-delay: 0.1s;
+    }
+
+    &--6 {
+      --line-w: 2px;
+      --from: -20vw;
+      --shift: 85vw;
+      --sway-dur: 5.4s;
+      background: rgba($color-cyan, 0.5);
+      transition-delay: 0.18s;
+      animation-delay: 0.18s;
+    }
+  }
+
+  &.is-revealed &__line {
+    opacity: 1;
+    animation: p-hero-line-trip var(--sway-dur) ease-in-out both;
+  }
+
+  // コンテンツ ----------------------------------------
+  &__inner {
+    position: relative;
+    width: min(100% - #{$container-gutter * 2}, #{$container-width});
+    height: 100%;
+    margin-inline: auto;
+  }
+
+  &__title {
+    position: absolute;
+    top: 427px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: $color-white;
+  }
+
+  &__title-line {
+    display: inline-block;
+    padding: 2px 12px;
+    background: $color-main;
+  }
+
+  &__lead {
+    position: absolute;
+    top: 586px;
+    left: 0;
+    width: 546px;
+    padding: 20px 20px 22px;
+    background: linear-gradient(90deg, rgba($color-main, 0.88) 0%, rgba($color-main, 0.45) 55%, rgba($color-main, 0) 100%);
+    color: $color-white;
+  }
+
+  &__lead-main {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  &__lead-sub {
+    margin-top: 28px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  &__cta {
+    position: absolute;
+    top: 530px;
+    right: 0;
+    width: 352px;
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 261px;
+    height: 79px;
+    margin: 0 0 10px 45px;
+    padding-bottom: 14px;
+    background: url('../images/hero-bubble.svg') no-repeat center / 100% 100%;
+    color: $color-white;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__schedule {
+    margin-top: 22px;
+    min-height: 59px;
+  }
+
+  // Tablet ---------------------------------------------
+  @include tb {
+    --slant: 180px;
+    height: auto;
+    min-height: 640px;
+
+    &__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      gap: 24px;
+      padding: 160px 0 56px;
+    }
+
+    &__title,
+    &__lead,
+    &__cta {
+      position: static;
+    }
+
+    &__title {
+      font-size: 30px;
+    }
+
+    &__lead {
+      width: min(100%, 500px);
+    }
+
+    &__lead-main {
+      font-size: 22px;
+    }
+
+    &__lead-sub {
+      margin-top: 16px;
+      font-size: 16px;
+    }
+
+    &__cta {
+      display: grid;
+      grid-template-columns: auto auto;
+      align-items: end;
+      gap: 12px 24px;
+      width: auto;
+    }
+
+    &__badge {
+      grid-column: 1 / -1;
+      margin: 0 0 -6px 30px;
+    }
+
+    &__schedule {
+      margin-top: 0;
+      min-width: 300px;
+    }
+  }
+
+  // Smartphone -----------------------------------------
+  // 写真を上部に配置し、テキストは写真の下に縦積み
+  @include sp {
+    --slant: 60px;
+    min-height: 0;
+    background: $color-bg-light;
+
+    &__bg {
+      bottom: auto;
+      height: 300px;
+    }
+
+    &__photo--main {
+      width: 100%;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), 0 100%);
+    }
+
+    &__photo--sub,
+    &__veil,
+    &__stripe--1,
+    &__stripe--2,
+    &__lines {
+      display: none;
+    }
+
+    &__inner {
+      align-items: stretch;
+      gap: 16px;
+      padding: 236px 0 40px;
+    }
+
+    &__title {
+      font-size: 22px;
+      gap: 6px;
+    }
+
+    &__title-line {
+      padding: 2px 10px;
+    }
+
+    &__lead {
+      width: 100%;
+      padding: 16px;
+      background: $color-main;
+    }
+
+    &__lead-main {
+      font-size: 17px;
+
+      br {
+        display: none;
+      }
+    }
+
+    &__lead-sub {
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    &__cta {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    &__badge {
+      align-self: center;
+      margin: 0;
+      width: 240px;
+      height: 72px;
+      font-size: 16px;
+    }
+
+    &__schedule {
+      min-width: 0;
+      background: $color-white;
+    }
+  }
+}
+
+// 追加ライン:左から右端へ行き、戻りながら静止位置へ落ち着く
+@keyframes p-hero-line-trip {
+  0% {
+    transform: translate3d(var(--from), 0, 0);
+  }
+
+  48% {
+    transform: translate3d(var(--peak), 0, 0);
+  }
+
+  100% {
+    transform: translate3d(var(--shift), 0, 0);
+  }
+}

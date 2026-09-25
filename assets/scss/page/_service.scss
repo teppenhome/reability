@@ -1,0 +1,288 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// サービス紹介
+.p-service {
+  position: relative;
+  padding: 120px 0 200px;
+  background: $gradient-main;
+
+  .c-heading__ja {
+    margin-top: -100px;
+  }
+
+  // カード5枚(上段3 / 下段2 を中央寄せ)
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 92px 32px;
+    margin-top: 68px;
+  }
+
+  &__item {
+    position: relative;
+    width: 352px;
+    height: 554px;
+  }
+
+  &__photo {
+    position: relative;
+    z-index: 1;
+    width: 352px;
+    height: 390px;
+    border-radius: $radius-card;
+  }
+
+  // 写真の後ろにずれて見える濃紺のパネル
+  &__panel {
+    position: absolute;
+    left: 12px;
+    top: 39px;
+    width: 352px;
+    height: 515px;
+    padding: 366px 32px 0;
+    border-radius: $radius-card;
+    background: $gradient-panel;
+    color: $color-white;
+    text-align: center;
+  }
+
+  &__name {
+    width: 100%;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+
+    &--sm {
+      font-size: 22px;
+      font-weight: 600;
+      white-space: nowrap;
+      transform: translateX(-20px);
+    }
+  }
+
+  &__text {
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.75;
+    text-align: left;
+  }
+
+  // ダンスのイラスト(見出し右側にはみ出す / 3レイヤーを重ねる)
+  &__illust {
+    position: absolute;
+    top: -140px;
+    left: min(calc(50% + 62px), calc(100% - 575px));
+    z-index: $z-illust;
+    width: 575px;
+    height: auto;
+    aspect-ratio: 650 / 518;
+    pointer-events: none;
+    background: none;
+  }
+
+  &__illust-layer {
+    position: absolute;
+    display: block;
+    height: auto;
+    opacity: 0;
+    transform: translate3d(0, -72px, 0);
+
+    &--front {
+      z-index: 3;
+      width: 54%;
+      left: 27%;
+      top: 24%;
+    }
+
+    &--mid {
+      z-index: 2;
+      width: 86%;
+      left: 6%;
+      top: 5%;
+    }
+
+    &--back {
+      z-index: 1;
+      width: 104%;
+      left: -2%;
+      top: -4%;
+    }
+  }
+
+  [data-anim='illust-drop'].is-inview &__illust-layer {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.8s ease-out,
+      transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &--front {
+      transition-delay: 0.1s;
+    }
+
+    &--mid {
+      transition-delay: 0.55s;
+    }
+
+    &--back {
+      transition-delay: 1s;
+    }
+  }
+
+  // 下部の装飾文字(下パディング内 / 横に連続 / 無限スクロール)
+  &__ticker {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 16px;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  &__ticker-track {
+    display: flex;
+    width: max-content;
+    animation: p-service-ticker 40s linear infinite;
+  }
+
+  &__ticker-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-right: 16px;
+
+    img {
+      display: block;
+      width: auto;
+    }
+  }
+
+  &__ticker-text {
+    height: 72px;
+  }
+
+  &__ticker-mark {
+    height: 72px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__ticker-track {
+      animation: none;
+    }
+  }
+
+  // Tablet ---------------------------------------------
+  @include tb {
+    padding: 88px 0 104px;
+
+    &__list {
+      gap: 40px 32px;
+      margin-top: 56px;
+    }
+
+    &__item {
+      width: calc((100% - 32px) / 2);
+      max-width: 360px;
+      height: auto;
+    }
+
+    &__photo {
+      width: calc(100% - 16px);
+      height: auto;
+      aspect-ratio: 352 / 390;
+    }
+
+    &__panel {
+      position: relative;
+      left: 12px;
+      top: -32px;
+      width: calc(100% - 12px);
+      height: auto;
+      min-height: 160px;
+      margin-bottom: -32px;
+      padding: 60px 20px 24px;
+    }
+
+    &__name {
+      font-size: 20px;
+
+      &--sm {
+        font-size: 17px;
+      }
+    }
+
+    &__illust {
+      width: 215px;
+      top: -20px;
+      left: auto;
+      right: 0;
+    }
+
+    &__ticker {
+      bottom: 24px;
+    }
+
+    &__ticker-text {
+      height: 52px;
+    }
+
+    &__ticker-mark {
+      height: 52px;
+    }
+  }
+
+  // Smartphone: 2列から1列 ------------------------------
+  @include sp {
+    padding: 56px 0 72px;
+
+    &__list {
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    &__item {
+      width: min(100%, 340px);
+    }
+
+    &__photo {
+      aspect-ratio: 352 / 300;
+    }
+
+    &__panel {
+      min-height: 0;
+      padding: 56px 20px 22px;
+    }
+
+    &__text {
+      font-size: 14px;
+    }
+
+    &__illust {
+      display: none;
+    }
+
+    &__ticker {
+      bottom: 16px;
+    }
+
+    &__ticker-text {
+      height: 36px;
+    }
+
+    &__ticker-mark {
+      height: 36px;
+    }
+  }
+}
+
+@keyframes p-service-ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}

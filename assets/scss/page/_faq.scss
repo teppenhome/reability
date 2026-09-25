@@ -1,0 +1,206 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// よくあるご質問(details / summary で開閉。JS 不要)
+.p-faq {
+  padding: 100px 0 74px;
+  background: $color-bg-light;
+
+  .c-heading__ja {
+    margin-top: -100px;
+  }
+
+  &__lead {
+    margin-top: 28px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.9;
+  }
+
+  &__list {
+    display: grid;
+    gap: 12px;
+    width: 928px;
+    max-width: 100%;
+    margin: 64px auto 0;
+  }
+
+  &__details {
+    border: 2px solid $color-navy;
+    border-radius: $radius-card;
+    background: $color-white;
+    font-family: $font-zen-kaku;
+
+    &[open] {
+      background: $color-white;
+    }
+
+    &[open] .p-faq__question::after {
+      transform: translateY(-50%) rotate(90deg);
+    }
+  }
+
+  &__question {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    min-height: 63px;
+    padding: 10px 72px 10px 40px;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    // 右向き矢印(開くと下向きに回転)
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 32px;
+      width: 12px;
+      height: 20px;
+      transform: translateY(-50%);
+      transition: transform 0.2s;
+      background: $color-navy;
+      @include mask-icon('caret-right');
+    }
+  }
+
+  &__q {
+    flex: none;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1;
+    color: $color-navy;
+  }
+
+  &__q-text {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  &__answer {
+    padding: 0 72px 24px 105px;
+    font-family: $font-base;
+    font-size: 16px;
+    line-height: 1.85;
+  }
+
+  &__contact {
+    margin-top: 115px;
+    text-align: center;
+  }
+
+  &__contact-lead {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 736px;
+    max-width: 100%;
+    min-height: 87px;
+    margin-inline: auto;
+    padding: 16px 32px;
+    border-radius: $radius-card;
+    background: $gradient-lead;
+    color: $color-white;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  &__contact-text {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  &__arrows {
+    margin-top: 8px;
+  }
+
+  @include tb {
+    padding: 80px 0 96px;
+
+    &__list {
+      margin-top: 48px;
+    }
+
+    &__question {
+      gap: 24px;
+      padding-left: 28px;
+    }
+
+    &__answer {
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+  }
+
+  @include sp {
+    padding: 56px 0 72px;
+
+    &__lead {
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
+    &__list {
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    &__details {
+      border-radius: 14px;
+    }
+
+    &__question {
+      align-items: flex-start;
+      gap: 12px;
+      min-height: 56px;
+      padding: 14px 44px 14px 16px;
+
+      &::after {
+        top: 26px;
+        right: 16px;
+        width: 9px;
+        height: 15px;
+      }
+    }
+
+    &__details[open] &__question::after {
+      transform: rotate(90deg);
+    }
+
+    &__q {
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    &__q-text {
+      font-size: 15px;
+    }
+
+    &__answer {
+      padding: 0 16px 18px 48px;
+      font-size: 14px;
+    }
+
+    &__contact {
+      margin-top: 56px;
+    }
+
+    &__contact-lead {
+      min-height: 0;
+      padding: 14px 16px;
+      font-size: 17px;
+    }
+
+    &__contact-text {
+      font-size: 14px;
+    }
+  }
+}

@@ -1,0 +1,187 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// スタジオプログラム
+.p-studio {
+  position: relative;
+  padding: 100px 0 60px;
+  background: $color-bg-light;
+
+  .c-heading__ja {
+    margin-top: -100px;
+  }
+
+  &__lead {
+    margin-top: 36px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.9;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 256px);
+    justify-content: space-between;
+    gap: 90px 32px;
+    margin-top: 64px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__photo {
+    aspect-ratio: 1;
+    border-radius: $radius-card $radius-card 0 0;
+  }
+
+  // 水色のラベル帯
+  &__name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+    min-height: 43px;
+    padding: 4px 8px;
+    background: $color-cyan;
+    color: $color-white;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+
+    &--sm {
+      font-size: 20px;
+    }
+  }
+
+  &__text {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.85;
+  }
+
+  &__note {
+    margin-top: 72px;
+    font-family: $font-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.8;
+    text-align: center;
+    color: $color-navy;
+  }
+
+  &__action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    margin-top: 32px;
+  }
+
+  // ジャンプのイラスト(ボタンの右にはみ出す)
+  &__illust {
+    position: absolute;
+    left: calc(50% + 203px);
+    bottom: -253px;
+    z-index: $z-illust;
+    width: 386px;
+    height: auto;
+    aspect-ratio: 386 / 473;
+    pointer-events: none;
+    background: none;
+  }
+
+  // Tablet ---------------------------------------------
+  @include tb {
+    padding: 80px 0 120px;
+
+    &__list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 56px 32px;
+      margin-top: 48px;
+    }
+
+    &__photo {
+      aspect-ratio: 16 / 10;
+    }
+
+    &__illust {
+      width: 240px;
+      left: auto;
+      right: 0;
+      bottom: -70px;
+    }
+  }
+
+  // Smartphone ----------------------------------------
+  @include sp {
+    padding: 56px 0 72px;
+
+    &__lead {
+      margin-top: 20px;
+      font-size: 15px;
+
+      br {
+        display: none;
+      }
+    }
+
+    &__list {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    // 写真を左・テキストを右の横並びに変更
+    &__item {
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      grid-template-areas:
+        'photo name'
+        'photo text';
+      align-content: start;
+      gap: 0 16px;
+    }
+
+    &__photo {
+      grid-area: photo;
+      aspect-ratio: 1;
+      border-radius: 12px;
+    }
+
+    &__name {
+      grid-area: name;
+      justify-content: flex-start;
+      min-height: 0;
+      padding: 0 0 6px;
+      background: none;
+      border-bottom: 2px solid $color-cyan;
+      color: $color-navy;
+      font-size: 18px;
+
+      &--sm {
+        font-size: 16px;
+      }
+    }
+
+    &__text {
+      grid-area: text;
+      margin-top: 8px;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    &__note {
+      margin-top: 40px;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    &__illust {
+      display: none;
+    }
+  }
+}

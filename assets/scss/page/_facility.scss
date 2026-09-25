@@ -1,0 +1,222 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// 施設紹介
+.p-facility {
+  position: relative;
+  padding: 100px 0 210px;
+  background: $color-bg-light;
+
+  .c-heading__ja {
+    margin-top: -100px;
+  }
+
+  &__lead {
+    max-width: 1030px;
+    margin-top: 74px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.85;
+  }
+
+  &__areas {
+    display: grid;
+    gap: 122px;
+    margin-top: 113px;
+  }
+
+  &__area {
+    position: relative;
+  }
+
+  &__gallery {
+    display: grid;
+    grid-template-columns: 544px 256px 256px;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  &__shot {
+    height: 370px;
+  }
+
+  // 緑のタグ(大きい写真の上部に重なる)
+  &__tag {
+    position: absolute;
+    top: 18px;
+    left: 293px;
+    z-index: 1;
+    padding: 6px 20px;
+    background: $color-green;
+    color: $color-white;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  &__area--studio &__tag {
+    left: 352px;
+  }
+
+  &__caption {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  &__amenities {
+    display: grid;
+    grid-template-columns: repeat(4, 256px);
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 120px;
+  }
+
+  &__amenity-photo {
+    height: 180px;
+  }
+
+  &__amenity-name {
+    margin-top: 12px;
+    font-family: $font-zen-kaku;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  &__amenity-note {
+    margin: 4px 0 0 8px;
+    font-size: 18px;
+  }
+
+  &__action {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 106px;
+  }
+
+  // マシンのイラスト(下の How to use セクションに少しはみ出す)
+  &__illust {
+    position: absolute;
+    bottom: -67px;
+    left: min(calc(50% + 394px), calc(100% - 245px));
+    z-index: $z-illust;
+    width: 245px;
+    height: auto;
+    aspect-ratio: 245 / 324;
+    pointer-events: none;
+    background: none;
+  }
+
+  // Tablet ---------------------------------------------
+  @include tb {
+    padding: 80px 0 120px;
+
+    &__areas {
+      gap: 72px;
+      margin-top: 56px;
+    }
+
+    &__gallery {
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    &__shot {
+      height: auto;
+      aspect-ratio: 3 / 4;
+
+      &--wide {
+        aspect-ratio: auto;
+      }
+    }
+
+    &__tag,
+    &__area--studio &__tag {
+      left: 16px;
+      top: 16px;
+      font-size: 22px;
+    }
+
+    &__amenities {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 24px;
+      margin-top: 72px;
+    }
+
+    &__amenity-photo {
+      height: auto;
+      aspect-ratio: 256 / 180;
+    }
+
+    &__illust {
+      display: none;
+    }
+  }
+
+  // Smartphone ----------------------------------------
+  @include sp {
+    padding: 56px 0 72px;
+
+    &__lead {
+      margin-top: 20px;
+      font-size: 15px;
+    }
+
+    &__areas {
+      gap: 48px;
+      margin-top: 32px;
+    }
+
+    // 大きい写真を上段、小さい2枚を下段に
+    &__gallery {
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    &__shot--wide {
+      grid-column: 1 / -1;
+      aspect-ratio: 16 / 10;
+    }
+
+    &__shot {
+      aspect-ratio: 1;
+    }
+
+    &__tag,
+    &__area--studio &__tag {
+      top: 0;
+      left: 0;
+      padding: 4px 14px;
+      font-size: 17px;
+    }
+
+    &__caption {
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    &__amenities {
+      gap: 24px 12px;
+      margin-top: 48px;
+    }
+
+    &__amenity-name {
+      font-size: 15px;
+    }
+
+    &__amenity-note {
+      font-size: 13px;
+    }
+
+    &__action {
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-top: 48px;
+    }
+  }
+}

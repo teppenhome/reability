@@ -1,0 +1,163 @@
+// ==========================================================
+// Animation hooks
+// ----------------------------------------------------------
+// レイアウト用クラスとは分離し、data-anim 属性だけを目印にする。
+// JS(IntersectionObserver) が .is-inview を付与したら再生する。
+// ==========================================================
+
+[data-anim='fade-up'] {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+
+  &.is-inview {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+// セクション日本語タイトル:マスクの下からせり上がる
+.c-heading[data-anim='fade-up'],
+.c-pill[data-anim='fade-up'] {
+  opacity: 1;
+  transform: none;
+}
+
+.c-heading__ja,
+.c-pill[data-anim],
+.p-cta__title {
+  overflow: hidden;
+}
+
+.c-heading__ja-mask {
+  display: block;
+  transform: translate3d(0, 115%, 0);
+}
+
+[data-anim].is-inview .c-heading__ja-mask {
+  transform: none;
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.c-heading__en {
+  opacity: 0;
+  filter: blur(28px);
+}
+
+[data-anim].is-inview .c-heading__en {
+  opacity: 1;
+  filter: blur(var(--heading-blur, 7px));
+  transition:
+    opacity 0.8s ease,
+    filter 0.9s ease;
+}
+
+@for $i from 2 through 10 {
+  [data-anim='fade-up']:nth-child(#{$i}).is-inview {
+    transition-delay: #{($i - 1) * 0.1}s;
+  }
+}
+
+[data-anim='fade-left'] {
+  opacity: 0;
+  transform: translate3d(-40px, 0, 0);
+
+  &.is-inview {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+// ヒーロー見出し:行ごとに左から拭き出す
+.p-hero__title[data-anim='fade-left'] {
+  opacity: 1;
+  transform: none;
+
+  .p-hero__title-line {
+    opacity: 0;
+    transform: translate3d(-28px, 0, 0);
+    clip-path: inset(0 100% 0 0);
+  }
+
+  &.is-inview .p-hero__title-line {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 0 0);
+    transition:
+      opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+      clip-path 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: 0.12s;
+
+    &:nth-child(2) {
+      transition-delay: 0.28s;
+    }
+  }
+}
+
+.p-hero__lead[data-anim='fade-left'] {
+  .p-hero__lead-main,
+  .p-hero__lead-sub {
+    opacity: 0;
+    transform: translate3d(-24px, 0, 0);
+    clip-path: inset(0 100% 0 0);
+  }
+
+  &.is-inview {
+    transition-delay: 0.36s;
+
+    .p-hero__lead-main,
+    .p-hero__lead-sub {
+      opacity: 1;
+      transform: none;
+      clip-path: inset(0 0 0 0);
+      transition:
+        opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .p-hero__lead-main {
+      transition-delay: 0.36s;
+    }
+
+    .p-hero__lead-sub {
+      transition-delay: 0.5s;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-anim],
+  [data-anim] .p-hero__title-line,
+  [data-anim] .p-hero__lead-main,
+  [data-anim] .p-hero__lead-sub,
+  [data-anim] .c-heading__ja-mask,
+  .c-heading__ja-mask,
+  .c-heading__en,
+  [data-anim].is-inview .c-heading__en {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    filter: blur(var(--heading-blur, 7px));
+    transition: none;
+  }
+
+  .p-hero__line {
+    opacity: 1;
+    transform: translate3d(var(--shift), 0, 0);
+    transition: none;
+    animation: none;
+  }
+
+  .p-service__illust-layer {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,525 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// コンセプト / 介護予防 / トレーナー / サポート
+.p-about {
+  margin-top: -112px; // .p-worry の V 字カットの内側へ食い込ませる(V の先端が丸ぼうずに触れる)
+  padding: 180px 0 130px;
+  background: $color-bg-light;
+
+  // PC:デザイン基準の座標を保つ(コンテナ 1120px 内)
+  &__divider {
+    height: 1px;
+    margin: 156px 0 0;
+    border: 0;
+    background: $color-navy;
+    opacity: 0.6;
+  }
+
+  @include tb {
+    margin-top: -64px;
+    padding: 48px 0 96px;
+
+    &__divider {
+      margin-top: 80px;
+    }
+  }
+
+  @include sp {
+    margin-top: -36px;
+    padding: 24px 0 64px;
+
+    &__divider {
+      margin-top: 56px;
+    }
+  }
+}
+
+// ---------------------------------------------------------
+// Concept / 介護予防 共通のテキスト部
+// ---------------------------------------------------------
+.p-concept,
+.p-prevention {
+  position: relative;
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+
+  &__title {
+    font-family: $font-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.7;
+    color: $color-navy;
+  }
+
+  @include tb {
+    gap: 40px;
+  }
+
+  @include sp {
+    flex-direction: column;
+    gap: 40px;
+
+    &__title {
+      font-size: 20px;
+    }
+  }
+}
+
+.p-concept {
+  margin-top: 53px;
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+    max-width: 640px;
+  }
+
+  &__title {
+    margin-top: 40px;
+  }
+
+  // CONCEPT 英字(コンテナ左端から少しはみ出す)
+  &__en {
+    margin-left: max(-72px, calc((100vw - 1120px) / -2 + 8px));
+    margin-bottom: -6px;
+    font-size: 150px;
+    line-height: 1.1;
+  }
+
+  &__text {
+    max-width: 573px;
+    margin-top: 20px;
+  }
+
+  &__photo {
+    flex: none;
+    margin-top: 48px;
+    margin-right: 25px;
+  }
+
+  @include tb {
+    margin-top: 32px;
+
+    &__en {
+      margin-left: 0;
+      font-size: 96px;
+    }
+
+    &__photo {
+      width: 38%;
+      margin-top: 24px;
+    }
+  }
+
+  @include sp {
+    flex-direction: column-reverse; // 写真 → 本文 の順に
+
+    &__en {
+      font-size: 60px;
+    }
+
+    &__photo {
+      align-self: center;
+      width: calc(100% - 12px);
+      margin: 0 12px 0 0;
+    }
+  }
+}
+
+.p-prevention {
+  margin-top: 237px;
+  justify-content: flex-start;
+  gap: 96px;
+
+  &__photo {
+    flex: none;
+    margin-right: 25px;
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+    max-width: 573px;
+    padding-top: 25px;
+  }
+
+  &__text {
+    margin-top: 28px;
+  }
+
+  @include tb {
+    margin-top: 96px;
+    gap: 40px;
+
+    &__photo {
+      width: 38%;
+    }
+  }
+
+  @include sp {
+    margin-top: 72px;
+
+    &__photo {
+      align-self: center;
+      width: calc(100% - 12px);
+      margin: 0 12px 0 0;
+    }
+
+    &__body {
+      padding-top: 0;
+    }
+
+    &__text {
+      margin-top: 16px;
+    }
+  }
+}
+
+// ---------------------------------------------------------
+// Trainer
+// ---------------------------------------------------------
+.p-trainer {
+  position: relative;
+  display: flex;
+  gap: 88px;
+  margin-top: 119px;
+
+  &__photo {
+    flex: none;
+    margin-top: 63px;
+    margin-right: 25px;
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__en {
+    margin-left: 0;
+    margin-bottom: -6px;
+    font-size: 150px;
+    line-height: 1.1;
+  }
+
+  &__name {
+    margin-top: 30px;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.6;
+    color: $color-navy;
+    font-family: $font-serif;
+    font-weight: 700;
+  }
+
+  &__career {
+    margin-top: 24px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.8;
+
+    li {
+      position: relative;
+      padding-left: 1.1em;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0.15em;
+        top: 0.85em;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: currentColor;
+      }
+    }
+  }
+
+  // 吹き出し(添付画像)
+  &__message {
+    position: relative;
+    max-width: 576px;
+    margin: 48px 0 0;
+    padding: 80px 44px 36px 40px;
+    background: url('../images/trainer-bubble.svg') no-repeat center / 100% 100%;
+    color: $color-navy;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.8;
+
+    p + p {
+      margin-top: 0.8em;
+    }
+  }
+
+  @include tb {
+    gap: 40px;
+    margin-top: 80px;
+
+    &__photo {
+      width: 38%;
+      margin-top: 40px;
+    }
+
+    &__en {
+      font-size: 96px;
+    }
+
+    &__message {
+      padding: 28px 28px;
+      font-size: 16px;
+    }
+  }
+
+  @include sp {
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 56px;
+
+    &__photo {
+      align-self: center;
+      width: calc(100% - 12px);
+      margin: 0 12px 0 0;
+    }
+
+    &__en {
+      font-size: 60px;
+    }
+
+    &__name {
+      font-size: 20px;
+    }
+
+    &__career {
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    &__message {
+      padding: 22px 20px;
+      font-size: 15px;
+    }
+  }
+}
+
+// ---------------------------------------------------------
+// Support(不安 → 安心)
+// ---------------------------------------------------------
+.p-support {
+  margin-top: 105px;
+  text-align: center;
+
+  &__lead {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 736px;
+    max-width: 100%;
+    min-height: 87px;
+    margin-inline: auto;
+    padding: 16px 32px;
+    border-radius: $radius-card;
+    background: $gradient-lead;
+    color: $color-white;
+    font-family: $font-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  &__arrows {
+    margin-top: 3px;
+  }
+
+  &__sub {
+    margin-top: 12px;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: $color-navy;
+  }
+
+  &__sub-text {
+    display: inline-block;
+    padding: 0 12px 14px;
+    background: url('../images/underline-pink.svg') no-repeat center bottom / 100% 10px;
+  }
+
+  &__bubbles {
+    display: grid;
+    gap: 79px;
+    margin-top: 40px;
+  }
+
+  &__bubble {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &--left {
+      justify-content: flex-start;
+      padding-left: 0;
+    }
+
+    &--right {
+      justify-content: flex-end;
+    }
+
+    // 円と吹き出しをつなぐしっぽ
+    &::after {
+      content: '';
+      position: absolute;
+      top: 18%;
+      width: 172px;
+      height: 86px;
+      background: url('../images/bubble-tail.svg') no-repeat center / 100% 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    &--left::after {
+      left: 220px;
+    }
+
+    &--right::after {
+      right: 220px;
+      transform: scaleX(-1);
+    }
+  }
+
+  &__circle {
+    position: relative;
+    z-index: 1;
+    flex: none;
+    width: 256px;
+    height: 256px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba($color-main, 0.08);
+    box-shadow: 0 0 0 5px $color-white;
+
+    img {
+      @include cover-img;
+    }
+  }
+
+  // 手描き風の楕円の吹き出し
+  &__oval {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 724px;
+    height: 350px;
+    padding: 0 86px;
+    background: url('../images/bubble-oval.svg') no-repeat center / 100% 100%;
+    text-align: left;
+  }
+
+  &__bubble--left &__oval {
+    margin-left: 64px;
+  }
+
+  &__bubble--right &__oval {
+    width: 712px;
+    margin-right: 64px;
+  }
+
+  &__bubble-text {
+    font-family: $font-zen-maru;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.7;
+    color: $color-navy;
+  }
+
+  @include tb {
+    margin-top: 72px;
+
+    &__lead {
+      font-size: 21px;
+    }
+
+    &__bubble {
+      flex-wrap: wrap;
+      justify-content: center;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    &__bubble--left &__oval,
+    &__bubble--right &__oval {
+      width: min(100%, 640px);
+      height: auto;
+      min-height: 260px;
+      margin: -40px 0 0;
+      padding: 56px 64px;
+    }
+
+    &__bubble--right {
+      flex-direction: column-reverse;
+
+      .p-support__oval {
+        margin: 0;
+        margin-top: -40px;
+      }
+    }
+
+    &__bubble-text {
+      font-size: 18px;
+    }
+  }
+
+  @include sp {
+    margin-top: 56px;
+
+    &__lead {
+      min-height: 0;
+      padding: 14px 16px;
+      font-size: 16px;
+    }
+
+    &__sub {
+      font-size: 19px;
+    }
+
+    &__bubbles {
+      gap: 48px;
+    }
+
+    &__bubble {
+      flex-direction: column;
+    }
+
+    &__bubble--right {
+      flex-direction: column-reverse;
+    }
+
+    &__circle {
+      width: 160px;
+      height: 160px;
+    }
+
+    &__bubble--left &__oval,
+    &__bubble--right &__oval {
+      width: 100%;
+      min-height: 0;
+      margin: -24px 0 0;
+      padding: 52px 36px 44px;
+      background-size: 100% 100%;
+    }
+
+    &__bubble--right .p-support__oval {
+      margin: 0;
+      margin-top: -24px;
+    }
+
+    &__bubble-text {
+      font-size: 14px;
+      line-height: 1.75;
+    }
+  }
+}

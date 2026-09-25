@@ -1,0 +1,198 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+@use '../foundation/functions' as *;
+
+// ヘッダー(PC: 横並びナビ / TB・SP: ハンバーガー + ドロワー)
+.l-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $z-header;
+  width: 100%;
+  height: $header-height;
+  font-family: $font-zen-kaku;
+  background: linear-gradient(90deg, rgba($color-main, 0.88) 0%, rgba($color-main, 0.45) 55%, rgba($color-main, 0) 100%);
+  transition: background 0.3s;
+
+  &.is-scrolled {
+    background: linear-gradient(90deg, rgba($color-main, 0.96) 0%, rgba($color-main, 0.55) 55%, rgba($color-main, 0) 100%);
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    height: 100%;
+    padding: 2px clamp(20px, vw(32), 32px);
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 2;
+    flex: none;
+    display: block;
+    line-height: 0;
+
+    img {
+      display: block;
+      width: auto;
+      height: 52px;
+    }
+  }
+
+  &__toggle {
+    display: none;
+  }
+
+  &__drawer {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(16px, vw(40), 40px);
+    min-width: 0;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, vw(40), 40px);
+  }
+
+  &__link {
+    display: block;
+    padding: 8px 0;
+    color: $color-white;
+    font-size: clamp(14px, vw(18), 18px);
+    font-weight: 500;
+    line-height: 1.4;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__contact {
+    --btn-color: var(--btn-border);
+    flex: none;
+    min-width: clamp(190px, vw(256), 256px);
+    min-height: 55px;
+    padding-inline: 24px 40px;
+    font-size: clamp(14px, vw(18), 18px);
+
+    .c-btn__icon {
+      right: 18px;
+    }
+  }
+
+  // TB / SP ---------------------------------------------
+  @include tb {
+    height: $header-height-sp;
+
+    &__logo img {
+      height: 32px;
+    }
+
+    &__toggle {
+      position: relative;
+      z-index: 2;
+      display: block;
+      flex: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba($color-white, 0.16);
+    }
+
+    // ハンバーガーの3本線
+    &__toggle-bar,
+    &__toggle-bar::before,
+    &__toggle-bar::after {
+      position: absolute;
+      left: 14px;
+      width: 20px;
+      height: 2px;
+      border-radius: 2px;
+      background: $color-white;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+
+    &__toggle-bar {
+      top: 23px;
+
+      &::before,
+      &::after {
+        content: '';
+        left: 0;
+      }
+
+      &::before {
+        top: -7px;
+      }
+
+      &::after {
+        top: 7px;
+      }
+    }
+
+    &__toggle[aria-expanded='true'] &__toggle-bar {
+      background: transparent;
+
+      &::before {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      &::after {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+
+    // ドロワー(全画面)
+    &__drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+      padding: $header-height-sp + 24px 24px 40px;
+      overflow-y: auto;
+      background: $color-main;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s, visibility 0.25s;
+
+      &.is-open {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &__nav {
+      width: min(100%, 420px);
+    }
+
+    &__list {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    &__link {
+      padding: 18px 8px;
+      border-bottom: 1px solid rgba($color-white, 0.3);
+      font-size: 18px;
+      text-align: center;
+    }
+
+    &__contact {
+      --btn-border: #{$color-white};
+      --btn-hover-color: #{$color-navy};
+      min-width: min(100%, 320px);
+      font-size: 18px;
+    }
+  }
+}

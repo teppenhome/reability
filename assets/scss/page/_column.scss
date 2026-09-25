@@ -1,0 +1,171 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// 健康づくりコラム(投稿一覧に差し替え予定。左右に画面端まで広がる帯)
+.p-column {
+  padding: 100px 0 120px;
+  background: $color-sky;
+
+  .c-heading__ja {
+    margin-top: -100px;
+  }
+
+  &__lead {
+    margin-top: 28px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.9;
+  }
+
+  &__scroller {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+    flex: none;
+    gap: 32px;
+  }
+
+  &__item {
+    flex: none;
+    width: 352px;
+  }
+
+  &__card {
+    display: block;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__thumb {
+    display: block;
+    height: 240px;
+    border-radius: 10px;
+  }
+
+  &__body {
+    display: block;
+    padding-top: 14px;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__cat {
+    padding: 2px 14px;
+    border-radius: 10px;
+    background: $color-pink;
+    color: $color-white;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  &__date {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  &__title {
+    display: block;
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  &__excerpt {
+    display: -webkit-box;
+    margin-top: 8px;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 1.75;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+
+  &__action {
+    display: flex;
+    justify-content: center;
+    margin-top: 159px;
+
+    .c-btn {
+      --btn-bg: transparent;
+      background: transparent;
+    }
+  }
+
+  @include tb {
+    padding: 80px 0 96px;
+
+    &__scroller {
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding: 0 24px 12px;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: 24px;
+    }
+
+    &__list {
+      gap: 24px;
+    }
+
+    &__item {
+      width: 300px;
+      scroll-snap-align: start;
+    }
+
+    &__thumb {
+      height: 204px;
+    }
+  }
+
+  @include sp {
+    padding: 56px 0 64px;
+
+    &__lead {
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
+    &__scroller {
+      margin-top: 28px;
+      padding-inline: 20px;
+      scroll-padding-inline: 20px;
+    }
+
+    &__item {
+      width: 260px;
+    }
+
+    &__thumb {
+      height: 176px;
+    }
+
+    &__cat {
+      font-size: 13px;
+    }
+
+    &__date {
+      font-size: 14px;
+    }
+
+    &__title {
+      font-size: 15px;
+    }
+
+    &__action {
+      margin-top: 32px;
+    }
+  }
+}

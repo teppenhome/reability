@@ -1,0 +1,47 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// 「スタジオスケジュールを見る」リンク
+.c-schedule-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 59px;
+  padding: 8px 24px;
+  background: linear-gradient(90deg, rgba($color-white, 0.95) 45%, rgba($color-white, 0) 100%);
+  color: $color-pink;
+  font-family: $font-serif;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.4;
+  text-align: center;
+
+  &__text {
+    display: inline-block;
+    padding: 0 48px 10px 0;
+    background: url('../images/line-schedule.png') no-repeat left bottom / 100% auto;
+  }
+
+  // 背景なし(明るい背景上)
+  &--serif {
+    width: fit-content;
+    margin-inline: auto;
+    background: none;
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  &--sm {
+    min-height: 0;
+    padding: 0;
+    font-size: 16px;
+  }
+
+  @include sp {
+    font-size: 16px;
+
+    &--serif {
+      font-size: 16px;
+    }
+  }
+}

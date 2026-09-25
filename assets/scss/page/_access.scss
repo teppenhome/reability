@@ -1,0 +1,147 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// アクセス・営業時間
+.p-access {
+  padding: 100px 0 158px;
+  background: $color-bg-light;
+
+  .c-heading__ja {
+    margin-top: -100px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 84px;
+  }
+
+  &__map {
+    flex: none;
+    width: 544px;
+    height: 470px;
+    overflow: hidden;
+    border-radius: $radius-card;
+
+    iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+
+  &__info {
+    flex: 0 0 542px;
+    max-width: 542px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 26px 0;
+    border-bottom: 1px solid rgba($color-navy, 0.3);
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &--contact {
+      align-items: center;
+      border-bottom: 0;
+    }
+  }
+
+  &__term {
+    flex: none;
+    width: 110px;
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  &__desc {
+    flex: 1;
+    line-height: 1.7;
+  }
+
+  &__hours,
+  &__closed {
+    display: block;
+  }
+
+  &__closed {
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  &__row--contact .c-btn {
+    min-width: 0;
+    width: 100%;
+    max-width: 344px;
+  }
+
+  @include tb {
+    padding: 80px 0 96px;
+
+    &__content {
+      flex-direction: column;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    &__map {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 544 / 380;
+    }
+
+    &__info {
+      flex: none;
+      width: 100%;
+      max-width: none;
+    }
+  }
+
+  @include sp {
+    padding: 56px 0 72px;
+
+    &__content {
+      gap: 28px;
+      margin-top: 28px;
+    }
+
+    &__info {
+      font-size: 15px;
+    }
+
+    // 項目名を上、内容を下の縦積みに変更
+    &__row,
+    &__row--contact {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+      padding: 14px 0;
+    }
+
+    &__term {
+      width: auto;
+      text-align: left;
+      font-size: 13px;
+      color: $color-main;
+    }
+
+    &__closed {
+      font-size: 13px;
+    }
+
+    &__row--contact .c-btn {
+      max-width: none;
+    }
+  }
+}

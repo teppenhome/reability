@@ -1,0 +1,177 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// ボタン(右端に矢印アイコン)
+.c-btn {
+  --btn-bg: #{$color-cyan};
+  --btn-color: #{$color-white};
+  --btn-border: transparent;
+  --btn-hover-bg: #{$color-white};
+  --btn-hover-color: var(--btn-bg);
+  --btn-hover-border: var(--btn-bg);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 256px;
+  min-height: 56px;
+  padding: 10px 48px 10px 32px;
+  border: 2px solid var(--btn-border);
+  border-radius: $radius-btn;
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  box-shadow: $shadow-btn;
+  transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+
+  &:hover {
+    background-color: var(--btn-hover-bg);
+    color: var(--btn-hover-color);
+    border-color: var(--btn-hover-border);
+  }
+
+  &__text {
+    display: block;
+  }
+
+  // 右向き矢印(currentColor で着色)
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 22px;
+    width: 10px;
+    height: 16px;
+    transform: translateY(-50%);
+    background: currentColor;
+    @include mask-icon('caret-right');
+  }
+
+  // 塗りつぶし ---------------------------------------
+  &--cyan {
+    --btn-bg: #{$color-cyan};
+  }
+
+  &--green {
+    --btn-bg: #{$color-green};
+  }
+
+  &--pink {
+    --btn-bg: #{$color-pink};
+  }
+
+  // 枠線 ---------------------------------------------
+  &--outline-navy,
+  &--outline-navy-dark,
+  &--outline-main,
+  &--outline-pink,
+  &--outline-line,
+  &--outline-lime,
+  &--outline-white {
+    --btn-bg: transparent;
+    --btn-hover-bg: var(--btn-border);
+    --btn-hover-color: #{$color-white};
+    --btn-hover-border: var(--btn-border);
+    box-shadow: none;
+  }
+
+  &--outline-navy {
+    --btn-color: #{$color-navy};
+    --btn-border: #{$color-navy};
+  }
+
+  &--outline-navy-dark {
+    --btn-bg: #{$color-white};
+    --btn-color: #{$color-navy};
+    --btn-border: #{$color-navy};
+  }
+
+  &--outline-main {
+    --btn-bg: #{$color-white};
+    --btn-color: #{$color-main};
+    --btn-border: #{$color-main};
+  }
+
+  &--outline-pink {
+    --btn-bg: #{$color-white};
+    --btn-color: #{$color-pink};
+    --btn-border: #{$color-pink};
+  }
+
+  &--outline-line {
+    --btn-color: #{$color-line-green};
+    --btn-border: #{$color-line-green};
+  }
+
+  &--outline-lime {
+    --btn-color: #{$color-lime};
+    --btn-border: #{$color-lime};
+  }
+
+  &--outline-white {
+    --btn-color: #{$color-white};
+    --btn-border: #{$color-white};
+    --btn-hover-bg: #{$color-white};
+    --btn-hover-color: #{$color-navy};
+    --btn-hover-border: #{$color-white};
+    border-width: 3px;
+  }
+
+  // サイズ ---------------------------------------------
+  &--lg {
+    width: 352px;
+    min-height: 83px;
+    padding: 16px 12px;
+    font-size: 24px;
+    white-space: nowrap;
+
+    .c-btn__icon {
+      display: none;
+    }
+  }
+
+  &--wide {
+    min-width: 310px;
+  }
+
+  // 左アイコン付き
+  &--icon-left {
+    gap: 12px;
+  }
+
+  &__lead-icon {
+    flex: none;
+    width: 24px;
+    height: 24px;
+
+    &--instagram {
+      background: currentColor;
+      @include mask-icon('instagram');
+    }
+
+    &--line {
+      width: 32px;
+      height: 32px;
+      background: url('../images/icon-line.png') no-repeat center / contain;
+    }
+  }
+
+  @include sp {
+    min-width: min(100%, 280px);
+    min-height: 52px;
+    font-size: 16px;
+
+    &--lg {
+      width: 100%;
+      min-height: 68px;
+      font-size: 20px;
+      white-space: normal;
+    }
+
+    &--wide {
+      min-width: min(100%, 280px);
+    }
+  }
+}

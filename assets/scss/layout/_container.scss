@@ -1,0 +1,12 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// コンテンツ幅 1120px(デザイン 1600px の左右 240px 余白)
+.l-container {
+  width: min(100% - #{$container-gutter * 2}, #{$container-width});
+  margin-inline: auto;
+
+  @include sp {
+    width: calc(100% - #{$container-gutter-sp * 2});
+  }
+}

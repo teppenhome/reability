@@ -1,0 +1,53 @@
+// ==========================================================
+// Base
+// ==========================================================
+@use 'variables' as *;
+@use 'mixins' as *;
+
+html {
+  font-size: 16px;
+}
+
+// 装飾(はみ出す英字・イラスト等)による横スクロールを防ぐ
+main {
+  overflow-x: clip;
+}
+
+body {
+  min-width: 320px;
+  font-family: $font-base;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: $color-text;
+  background: $color-white;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+
+  &.is-drawer-open {
+    overflow: hidden;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid $color-pink;
+  outline-offset: 3px;
+}
+
+.u-sp-only {
+  display: none;
+
+  @include sp {
+    display: initial;
+  }
+}
+
+.u-pc-only {
+  @include sp {
+    display: none;
+  }
+}
+
+.u-visually-hidden {
+  @include visually-hidden;
+}

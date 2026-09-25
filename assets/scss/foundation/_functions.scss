@@ -1,0 +1,14 @@
+// ==========================================================
+// Functions
+// ==========================================================
+@use 'sass:math';
+
+// デザイン値(px @1600)を vw に変換
+@function vw($px, $base: 1600) {
+  @return math.div($px, $base) * 100vw;
+}
+
+// rem 変換(基準16px)
+@function rem($px) {
+  @return math.div($px, 16) * 1rem;
+}

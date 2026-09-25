@@ -1,0 +1,221 @@
+@use '../foundation/variables' as *;
+@use '../foundation/mixins' as *;
+
+// こんなお悩みありませんか?
+.p-worry {
+  --v-edge: 112px; // 下端 V 字カットの高さ
+  position: relative;
+  z-index: 1;
+  padding: 117px 0 calc(var(--v-edge) + 100px);
+  background: $gradient-main;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--v-edge)), 50% 100%, 0 calc(100% - var(--v-edge)));
+
+  &__list {
+    display: grid;
+    gap: 156px;
+    margin-top: 122px;
+  }
+
+  &__item {
+    display: flex;
+    gap: 32px;
+    align-items: stretch;
+
+    &--reverse {
+      flex-direction: row-reverse;
+    }
+
+    &--offset {
+      margin-left: 10px;
+    }
+  }
+
+  &__photo {
+    flex: none;
+    width: 448px;
+    height: 448px;
+  }
+
+  &__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+  }
+
+  &__head {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  // 大きな番号(シャープな数字 + ぼかした白い影)
+  &__num {
+    position: relative;
+    flex: none;
+    width: 96px;
+    height: 100px;
+    font-family: $font-en;
+    font-size: 120px;
+    font-weight: 500;
+    line-height: 1;
+
+    &::before,
+    &::after {
+      content: attr(data-num);
+      position: absolute;
+      left: 0;
+      top: -14px;
+    }
+
+    &::before {
+      z-index: 1;
+      color: $color-text;
+    }
+
+    &::after {
+      left: 0;
+      top: -10px;
+      color: $color-white;
+      filter: blur(5px);
+      font-size: 150px;
+    }
+  }
+
+  &__heading {
+    padding-top: 22px;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: $color-text;
+  }
+
+  &__points {
+    display: grid;
+    gap: 13px;
+
+    li {
+      display: flex;
+      align-items: center;
+      min-height: 52px;
+      padding: 4px 22px;
+      background: rgba($color-main, 0.7);
+      color: $color-white;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+  }
+
+  // Tablet ---------------------------------------------
+  @include tb {
+    --v-edge: 64px;
+    padding: 80px 0 calc(var(--v-edge) + 96px);
+
+    &__list {
+      gap: 80px;
+      margin-top: 64px;
+    }
+
+    &__item {
+      gap: 24px;
+    }
+
+    &__photo {
+      width: 36%;
+      height: auto;
+      aspect-ratio: 1;
+      align-self: flex-start;
+    }
+
+    &__head {
+      gap: 16px;
+    }
+
+    &__num {
+      width: 72px;
+      height: 80px;
+      font-size: 100px;
+    }
+
+    &__heading {
+      padding-top: 12px;
+      font-size: 24px;
+    }
+
+    &__body {
+      gap: 24px;
+    }
+
+    &__points {
+      gap: 8px;
+
+      li {
+        min-height: 44px;
+        padding-inline: 16px;
+        font-size: 17px;
+      }
+    }
+  }
+
+  // Smartphone: 写真 → 見出し → リストの縦積み ----------------------
+  @include sp {
+    --v-edge: 36px;
+    padding: 56px 0 calc(var(--v-edge) + 56px);
+
+    &__list {
+      gap: 56px;
+      margin-top: 36px;
+    }
+
+    &__item,
+    &__item--reverse {
+      flex-direction: column;
+      gap: 16px;
+      margin-left: 0;
+    }
+
+    &__photo {
+      width: 100%;
+      max-height: 280px;
+      aspect-ratio: 16 / 10;
+    }
+
+    &__head {
+      gap: 12px;
+      align-items: center;
+    }
+
+    &__num {
+      width: 52px;
+      height: 60px;
+      font-size: 72px;
+
+      &::before,
+      &::after {
+        top: -8px;
+      }
+
+      &::after {
+        left: 12px;
+        top: 12px;
+      }
+    }
+
+    &__heading {
+      padding-top: 0;
+      font-size: 19px;
+    }
+
+    &__points {
+      gap: 6px;
+
+      li {
+        min-height: 40px;
+        padding: 6px 12px;
+        font-size: 14px;
+      }
+    }
+  }
+}
