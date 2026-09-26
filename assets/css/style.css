@@ -4298,7 +4298,7 @@ body.is-drawer-open {
   display: flex;
   justify-content: flex-start;
   overflow-x: auto;
-  padding-inline: max(24px, (100vw - 1120px) / 2);
+  padding-inline: 0;
   scroll-snap-type: x mandatory;
   scroll-padding-inline: max(24px, (100vw - 1120px) / 2);
   scrollbar-width: none;
@@ -4327,10 +4327,6 @@ body.is-drawer-open {
 .p-column__nav:hover:not(:disabled) {
   background: #0a416b;
   color: #fff;
-}
-.p-column__nav:disabled {
-  opacity: 0.35;
-  cursor: default;
 }
 .p-column__nav--prev {
   left: max(12px, (100vw - 1120px) / 2 - 24px);
@@ -4431,7 +4427,7 @@ body.is-drawer-open {
     padding: 80px 0 96px;
   }
   .p-column__scroller {
-    padding: 0 24px 12px;
+    padding: 0 0 12px;
     scroll-padding-inline: 24px;
   }
   .p-column__nav {
@@ -4468,7 +4464,7 @@ body.is-drawer-open {
     margin-top: 28px;
   }
   .p-column__scroller {
-    padding-inline: 20px;
+    padding-inline: 0;
     scroll-padding-inline: 20px;
   }
   .p-column__nav {
