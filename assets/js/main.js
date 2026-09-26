@@ -79,4 +79,35 @@
       animTargets.forEach(reveal);
     }
   }
+
+  // --- コラムカードの左右送り --------------------------------
+  var columnScroller = document.querySelector('.js-column-scroller');
+  var columnPrev = document.querySelector('.js-column-prev');
+  var columnNext = document.querySelector('.js-column-next');
+
+  if (columnScroller && columnPrev && columnNext) {
+    var columnStep = function () {
+      var item = columnScroller.querySelector('.p-column__item');
+      var list = columnScroller.querySelector('.p-column__list');
+      if (!item || !list) return 384;
+      var gap = parseFloat(window.getComputedStyle(list).gap) || 32;
+      return item.offsetWidth + gap;
+    };
+
+    var updateColumnNav = function () {
+      var max = columnScroller.scrollWidth - columnScroller.clientWidth;
+      columnPrev.disabled = columnScroller.scrollLeft <= 2;
+      columnNext.disabled = columnScroller.scrollLeft >= max - 2;
+    };
+
+    columnPrev.addEventListener('click', function () {
+      columnScroller.scrollBy({ left: -columnStep(), behavior: 'smooth' });
+    });
+    columnNext.addEventListener('click', function () {
+      columnScroller.scrollBy({ left: columnStep(), behavior: 'smooth' });
+    });
+    columnScroller.addEventListener('scroll', updateColumnNav, { passive: true });
+    window.addEventListener('resize', updateColumnNav);
+    updateColumnNav();
+  }
 })();

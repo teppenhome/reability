@@ -7,6 +7,11 @@
   padding: 180px 0 130px;
   background: $color-bg-light;
 
+  &__pill {
+    position: relative;
+    z-index: 2;
+  }
+
   // PC:デザイン基準の座標を保つ(コンテナ 1120px 内)
   &__divider {
     height: 1px;
@@ -70,6 +75,26 @@
 .p-concept {
   margin-top: 53px;
 
+  &__circle {
+    position: absolute;
+    z-index: 0;
+    width: 894px;
+    max-width: none;
+    height: auto;
+    pointer-events: none;
+
+    &--tr {
+      top: -430px;
+      right: -360px;
+    }
+  }
+
+  &__body,
+  &__photo {
+    position: relative;
+    z-index: 1;
+  }
+
   &__body {
     flex: 1;
     min-width: 0;
@@ -102,6 +127,15 @@
   @include tb {
     margin-top: 32px;
 
+    &__circle {
+      width: min(68vw, 560px);
+
+      &--tr {
+        top: -160px;
+        right: -26%;
+      }
+    }
+
     &__en {
       margin-left: 0;
       font-size: 96px;
@@ -115,6 +149,16 @@
 
   @include sp {
     flex-direction: column-reverse; // 写真 → 本文 の順に
+
+    &__circle {
+      width: min(92vw, 400px);
+
+      &--tr {
+        top: -6%;
+        right: 50%;
+        translate: 50% 0;
+      }
+    }
 
     &__en {
       font-size: 60px;
@@ -132,6 +176,23 @@
   margin-top: 237px;
   justify-content: flex-start;
   gap: 96px;
+
+  &__circle {
+    position: absolute;
+    top: 260px;
+    left: -360px;
+    z-index: 0;
+    width: 894px;
+    max-width: none;
+    height: auto;
+    pointer-events: none;
+  }
+
+  &__body,
+  &__photo {
+    position: relative;
+    z-index: 1;
+  }
 
   &__photo {
     flex: none;
@@ -153,6 +214,12 @@
     margin-top: 96px;
     gap: 40px;
 
+    &__circle {
+      top: 80px;
+      left: -26%;
+      width: min(68vw, 560px);
+    }
+
     &__photo {
       width: 38%;
     }
@@ -160,6 +227,13 @@
 
   @include sp {
     margin-top: 72px;
+
+    &__circle {
+      top: -8%;
+      left: 50%;
+      width: min(92vw, 400px);
+      translate: -50% 0;
+    }
 
     &__photo {
       align-self: center;
@@ -308,8 +382,29 @@
 // Support(不安 → 安心)
 // ---------------------------------------------------------
 .p-support {
+  position: relative;
   margin-top: 105px;
   text-align: center;
+
+  &__deco {
+    position: absolute;
+    top: auto;
+    right: -480px;
+    bottom: -400px;
+    z-index: 0;
+    width: 720px;
+    max-width: none;
+    height: auto;
+    pointer-events: none;
+  }
+
+  &__lead,
+  &__arrows,
+  &__sub,
+  &__bubbles {
+    position: relative;
+    z-index: 1;
+  }
 
   &__lead {
     display: flex;
@@ -437,6 +532,13 @@
   @include tb {
     margin-top: 72px;
 
+    &__deco {
+      top: auto;
+      right: -32%;
+      bottom: -140px;
+      width: min(56vw, 460px);
+    }
+
     &__lead {
       font-size: 21px;
     }
@@ -475,6 +577,13 @@
 
   @include sp {
     margin-top: 56px;
+
+    &__deco {
+      top: auto;
+      right: -34%;
+      bottom: -110px;
+      width: min(78vw, 340px);
+    }
 
     &__lead {
       min-height: 0;

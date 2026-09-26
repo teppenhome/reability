@@ -60,6 +60,20 @@
   }
 }
 
+// 円の装飾:ぼかしが溶けて現れる
+[data-anim='fade-blur'] {
+  opacity: 0;
+  filter: blur(28px);
+
+  &.is-inview {
+    opacity: 1;
+    filter: blur(0);
+    transition:
+      opacity 1.5s ease,
+      filter 1.8s ease;
+  }
+}
+
 [data-anim='fade-left'] {
   opacity: 0;
   transform: translate3d(-40px, 0, 0);
@@ -159,5 +173,9 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  [data-anim='fade-blur'] {
+    filter: none;
   }
 }

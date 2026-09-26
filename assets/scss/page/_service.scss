@@ -75,9 +75,9 @@
   &__illust {
     position: absolute;
     top: -140px;
-    left: min(calc(50% + 62px), calc(100% - 575px));
+    left: min(calc(50% + 62px), calc(100% - 540px));
     z-index: $z-illust;
-    width: 575px;
+    width: 540px;
     height: auto;
     aspect-ratio: 650 / 518;
     pointer-events: none;
@@ -216,7 +216,7 @@
     }
 
     &__illust {
-      width: 215px;
+      width: 200px;
       top: -20px;
       left: auto;
       right: 0;

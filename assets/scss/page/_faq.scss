@@ -3,8 +3,37 @@
 
 // よくあるご質問(details / summary で開閉。JS 不要)
 .p-faq {
+  position: relative;
+  overflow: hidden;
   padding: 100px 0 74px;
   background: $color-bg-light;
+
+  &__circle {
+    position: absolute;
+    z-index: 0;
+    width: 894px;
+    max-width: none;
+    height: auto;
+    pointer-events: none;
+
+    &--tr {
+      top: -260px;
+      right: -80px;
+      width: 680px;
+    }
+
+    &--bl {
+      bottom: -200px;
+      left: -180px;
+      width: 780px;
+      transition-delay: 0.25s;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+  }
 
   .c-heading__ja {
     margin-top: -100px;
@@ -125,6 +154,22 @@
   @include tb {
     padding: 80px 0 96px;
 
+    &__circle {
+      width: min(68vw, 560px);
+
+      &--tr {
+        top: -140px;
+        right: -8%;
+        width: min(52vw, 480px);
+      }
+
+      &--bl {
+        bottom: -100px;
+        left: -12%;
+        width: min(60vw, 500px);
+      }
+    }
+
     &__list {
       margin-top: 48px;
     }
@@ -142,6 +187,21 @@
 
   @include sp {
     padding: 56px 0 72px;
+
+    &__circle {
+      width: min(92vw, 400px);
+
+      &--tr {
+        top: -80px;
+        right: -28%;
+        width: min(74vw, 320px);
+      }
+
+      &--bl {
+        bottom: -140px;
+        left: -36%;
+      }
+    }
 
     &__lead {
       margin-top: 16px;
