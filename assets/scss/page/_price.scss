@@ -517,11 +517,17 @@
     }
   }
 
+  &__visitor-note {
+    display: block;
+    margin-top: 6px;
+    font-size: 18px;
+  }
+
   &__personal-price {
     display: flex;
     align-items: baseline;
     justify-content: center;
-    padding: 28px 0 26px;
+    padding: 14px 0;
     border-bottom: 1px solid rgba($color-text, 0.35);
   }
 

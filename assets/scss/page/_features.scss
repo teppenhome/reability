@@ -75,6 +75,13 @@
     line-height: 1.7;
   }
 
+  &__highlight {
+    padding-bottom: 4px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    background: url('../images/underline-pink.svg') no-repeat center bottom / 100% 5px;
+  }
+
   // Tablet ---------------------------------------------
   @include tb {
     padding: 88px 0 120px;

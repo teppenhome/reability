@@ -158,7 +158,7 @@
   &__action {
     display: flex;
     justify-content: center;
-    margin-top: 159px;
+    margin-top: 96px;
 
     .c-btn {
       --btn-bg: transparent;
@@ -208,6 +208,10 @@
 
     &__thumb {
       height: 204px;
+    }
+
+    &__action {
+      margin-top: 72px;
     }
   }
 

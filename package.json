@@ -5,9 +5,13 @@
   "description": "Re:アビリティ トップページ(静的HTML + SCSS)",
   "scripts": {
     "build": "sass assets/scss/style.scss assets/css/style.css --style=expanded --no-source-map",
-    "watch": "sass assets/scss/style.scss assets/css/style.css --style=expanded --watch"
+    "watch": "sass assets/scss/style.scss assets/css/style.css --style=expanded --watch",
+    "serve": "browser-sync start --server --files \"index.html, assets/css/*.css, assets/js/*.js\" --no-notify",
+    "dev": "concurrently --kill-others --names SCSS,SERVER --prefix-colors cyan,green \"npm:watch\" \"npm:serve\""
   },
   "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "concurrently": "^10.0.5",
     "sass": "^1.80.0"
   }
 }

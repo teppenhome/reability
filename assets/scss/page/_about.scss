@@ -172,8 +172,203 @@
   }
 }
 
+// ---------------------------------------------------------
+// Re:アビリティ 名前の由来
+// 円はデザインの位置に置き、枠で切らず画面の外まで線を続ける
+// ---------------------------------------------------------
+.p-name-origin {
+  @include full-bleed;
+  position: relative;
+  margin-top: 0;
+  // 左の円が上にはみ出す分。線をここで切らない
+  padding-top: 0;
+  overflow: visible;
+
+  // デザインフレーム 1024×674
+  &__stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    aspect-ratio: 1024 / 400;
+  }
+
+  // 右下の円が下まで描き切れる余白
+  &__bleed {
+    height: 4vw;
+  }
+
+  &__circle {
+    position: absolute;
+    z-index: 0;
+    aspect-ratio: 1;
+    border: 1px solid $color-cyan;
+    border-radius: 50%;
+    pointer-events: none;
+
+    // 二重線。縮小しても1pxのままなので途切れない
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 1.72%;
+      border: 1px solid $color-cyan;
+      border-radius: inherit;
+    }
+
+    &--left {
+      width: 55.61%;
+      left: -9.4%;
+      top: -10.79%;
+    }
+
+    &--top-right {
+      width: 20.92%;
+      left: 62.47%;
+      top: 14.35%;
+
+      &::before {
+        inset: 4.57%;
+      }
+    }
+
+    &--bottom-right {
+      width: 55.88%;
+      left: 58.76%;
+      top: 49.96%;
+    }
+  }
+
+  &__card {
+    position: relative;
+    z-index: 1;
+    width: min(736px, calc(100% - 48px));
+    padding: 40px 92px 42px;
+    font-family: $font-zen-kaku;
+    border: 1px solid rgba($color-white, 0.72);
+    border-radius: 20px;
+    background: rgba($color-white, 0.28);
+    box-shadow:
+      0 16px 42px rgba($color-main, 0.1),
+      inset 0 1px 0 rgba($color-white, 0.85);
+    -webkit-backdrop-filter: blur(8px) saturate(115%);
+    backdrop-filter: blur(8px) saturate(115%);
+    translate: 0 36px;
+  }
+
+  &__name {
+    color: $color-pink;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 12px;
+    color: $color-text;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.5;
+
+    &::before,
+    &::after {
+      content: '';
+      width: 18px;
+      height: 2px;
+      background: currentColor;
+    }
+  }
+
+  &__text {
+    margin-top: 24px;
+    color: $color-text;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.75;
+  }
+
+  @include tb {
+    margin-top: 16px;
+
+    &__card {
+      width: min(680px, calc(100% - 48px));
+      padding: 36px 64px 38px;
+      translate: 0 20px;
+    }
+  }
+
+  @include sp {
+    margin-top: 0;
+    padding-top: 0;
+
+    &__stage {
+      aspect-ratio: auto;
+      padding: 4px 0 0;
+    }
+
+    &__bleed {
+      height: 8vw;
+    }
+
+    &__circle--left {
+      width: 78vw;
+      left: -36vw;
+      top: -12vw;
+    }
+
+    &__circle--top-right {
+      width: 34vw;
+      left: auto;
+      right: 4vw;
+      top: 0;
+    }
+
+    &__circle--bottom-right {
+      width: 84vw;
+      left: auto;
+      right: -42vw;
+      top: auto;
+      bottom: -32vw;
+    }
+
+    &__card {
+      width: calc(100% - 40px);
+      padding: 28px 24px 30px;
+      border-radius: 16px;
+      translate: 0;
+    }
+
+    &__name {
+      font-size: 21px;
+    }
+
+    &__title {
+      gap: 12px;
+      margin-top: 8px;
+      font-size: 17px;
+
+      &::before,
+      &::after {
+        width: 14px;
+      }
+    }
+
+    &__text {
+      margin-top: 20px;
+      font-size: 14px;
+      line-height: 1.8;
+
+      br {
+        display: none;
+      }
+    }
+  }
+}
+
 .p-prevention {
-  margin-top: 237px;
+  margin-top: 72px;
   justify-content: flex-start;
   gap: 96px;
 
@@ -257,13 +452,13 @@
 .p-trainer {
   position: relative;
   display: flex;
-  gap: 88px;
+  gap: 40px;
   margin-top: 119px;
 
   &__photo {
     flex: none;
     margin-top: 63px;
-    margin-right: 25px;
+    margin-right: 0;
   }
 
   &__body {
@@ -312,9 +507,18 @@
   }
 
   // 吹き出し(添付画像)
+  &__career-highlight,
+  &__message-highlight {
+    padding-bottom: 4px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    background: url('../images/underline-pink.svg') no-repeat center bottom / 100% 5px;
+  }
+
   &__message {
     position: relative;
-    max-width: 576px;
+    width: 680px;
+    max-width: 100%;
     margin: 48px 0 0;
     padding: 80px 44px 36px 40px;
     background: url('../images/trainer-bubble.svg') no-repeat center / 100% 100%;

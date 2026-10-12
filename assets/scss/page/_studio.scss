@@ -54,6 +54,11 @@
     &--sm {
       font-size: 20px;
     }
+
+    &--xs {
+      font-size: 18px;
+      white-space: nowrap;
+    }
   }
 
   &__text {
@@ -164,6 +169,10 @@
 
       &--sm {
         font-size: 16px;
+      }
+
+      &--xs {
+        font-size: 15px;
       }
     }
 
