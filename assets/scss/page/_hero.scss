@@ -345,24 +345,32 @@
       }
 
       &::after {
-        clip-path: polygon(100% 37.5%, 100% 100%, 84% 100%);
+        clip-path: polygon(100% 37.5%, 100% 100%, 85% 100%);
       }
     }
 
     &__stripe--1 {
       z-index: 3;
-      left: 30%;
+      left: 0;
       display: block;
-      width: 10px;
-      background: rgba($color-main, 0.35);
-      clip-path: none;
-      transform: skewX(-8deg);
-      transform-origin: top;
+      width: 100%;
+      background: rgba($color-cyan, 0.46);
+      clip-path: polygon(38% 0, calc(38% + 10px) 0, calc(14% + 10px) 100%, 14% 100%);
+      transform: none;
     }
 
-    &__stripe--2,
-    &__lines {
+    &__stripe--2 {
       display: none;
+    }
+
+    &__lines {
+      --slant: 24vw;
+      z-index: 3;
+      display: block;
+    }
+
+    &__line {
+      --peak: 105vw;
     }
 
     &__inner {

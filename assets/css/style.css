@@ -1217,20 +1217,27 @@ body.is-drawer-open {
     clip-path: polygon(0 0, 32% 0, 8% 100%, 0 100%);
   }
   .p-hero__veil::after {
-    clip-path: polygon(100% 37.5%, 100% 100%, 84% 100%);
+    clip-path: polygon(100% 37.5%, 100% 100%, 85% 100%);
   }
   .p-hero__stripe--1 {
     z-index: 3;
-    left: 30%;
+    left: 0;
     display: block;
-    width: 10px;
-    background: rgba(16, 99, 161, 0.35);
-    clip-path: none;
-    transform: skewX(-8deg);
-    transform-origin: top;
+    width: 100%;
+    background: rgba(75, 195, 229, 0.46);
+    clip-path: polygon(38% 0, calc(38% + 10px) 0, calc(14% + 10px) 100%, 14% 100%);
+    transform: none;
   }
-  .p-hero__stripe--2, .p-hero__lines {
+  .p-hero__stripe--2 {
     display: none;
+  }
+  .p-hero__lines {
+    --slant: 24vw;
+    z-index: 3;
+    display: block;
+  }
+  .p-hero__line {
+    --peak: 105vw;
   }
   .p-hero__inner {
     display: block;
