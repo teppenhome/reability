@@ -903,9 +903,11 @@ body.is-drawer-open {
     width: 100%;
   }
   .l-footer__actions {
-    justify-items: start;
+    justify-items: center;
   }
   .l-footer__sns {
+    justify-content: center;
+    width: 100%;
     flex-wrap: wrap;
   }
   .l-footer__nav {
@@ -4717,6 +4719,9 @@ body.is-drawer-open {
   }
 }
 @media (max-width: 767px) {
+  .p-instagram .c-heading__ja {
+    margin-top: -20px;
+  }
   .p-instagram {
     padding: 56px 0 64px;
   }
@@ -4920,6 +4925,9 @@ body.is-drawer-open {
   }
 }
 @media (max-width: 767px) {
+  .p-column .c-heading__ja {
+    margin-top: -20px;
+  }
   .p-column {
     padding: 56px 0 64px;
   }
