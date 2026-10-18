@@ -187,11 +187,13 @@
     }
 
     &__actions {
-      justify-items: center;
+      justify-items: start;
+      width: min(100%, 356px);
+      margin-inline: auto;
     }
 
     &__sns {
-      justify-content: center;
+      justify-content: flex-start;
       width: 100%;
       flex-wrap: wrap;
     }
