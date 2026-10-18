@@ -186,7 +186,11 @@
   }
 
   @include sp {
-    padding: 56px 0 72px;
+    .c-heading__ja {
+      margin-top: -20px;
+    }
+
+    padding: 56px 0 16px;
 
     &__circle {
       width: min(92vw, 400px);

@@ -60,7 +60,7 @@
 <section class="p-hero" aria-labelledby="hero-title">
   <div class="p-hero__bg" aria-hidden="true">
     <img class="p-hero__photo p-hero__photo--main" src="assets/images/hero-main.jpg" width="1168" height="800" alt="">
-    <img class="p-hero__photo p-hero__photo--sub" src="assets/images/hero-sub02.png" width="700" height="800" alt="">
+    <img class="p-hero__photo p-hero__photo--sub" src="assets/images/top-image02.jpg" width="780" height="768" alt="">
     <span class="p-hero__veil"></span>
     <span class="p-hero__stripe p-hero__stripe--1"></span>
     <span class="p-hero__stripe p-hero__stripe--2"></span>
@@ -171,7 +171,7 @@
 <div class="p-about">
   <div class="p-about__inner l-container">
 
-    <p class="p-about__pill c-pill" data-anim="fade-up"><span class="c-heading__ja-mask">そのお悩み、Re:アビリティにご相談ください。</span></p>
+    <p class="p-about__pill c-pill" data-anim="fade-up"><span class="c-heading__ja-mask">そのお悩み、<br class="u-sp-only">Re:アビリティにご相談ください。</span></p>
 
     <!-- Concept -->
     <section class="p-concept" id="concept" aria-labelledby="concept-title">
@@ -794,8 +794,10 @@
     <p class="p-voice__note">※人物写真はイメージです</p>
   </div>
 
-  <div class="p-voice__scroller" data-anim="fade-up">
-    <ul class="p-voice__list">
+  <div class="p-voice__slider" data-anim="fade-up">
+    <button class="p-voice__arrow p-voice__arrow--prev js-voice-prev" type="button" aria-label="前のお客様の声を見る"></button>
+    <div class="p-voice__scroller js-voice-scroller">
+      <ul class="p-voice__list">
       <li class="p-voice__item">
         <div class="p-voice__avatar"><img src="assets/images/voice-01.jpg" width="160" height="160" alt="" loading="lazy"></div>
         <p class="p-voice__who">60代女性</p>
@@ -832,7 +834,9 @@
         <p class="p-voice__menu">スタジオレッスン</p>
         <p class="p-voice__comment">運動が苦手な私でも、安心して身体を動かせました</p>
       </li>
-    </ul>
+      </ul>
+    </div>
+    <button class="p-voice__arrow p-voice__arrow--next js-voice-next" type="button" aria-label="次のお客様の声を見る"></button>
   </div>
 </section>
 
@@ -909,7 +913,7 @@
 
     <div class="p-faq__contact">
       <p class="p-faq__contact-lead">解決しないご質問はありませんか？</p>
-      <p class="p-faq__contact-text">ご利用方法や身体についての不安など、お気軽にご相談ください。</p>
+      <p class="p-faq__contact-text">ご利用方法や身体についての不安など、<br class="u-sp-only">お気軽にご相談ください。</p>
       <span class="p-faq__arrows c-arrows" aria-hidden="true"></span>
     </div>
   </div>
@@ -970,17 +974,20 @@
           <dt class="p-access__term">駐車場</dt>
           <dd class="p-access__desc">約２５台</dd>
         </div>
-        <div class="p-access__row">
-          <dt class="p-access__term">電話番号</dt>
-          <dd class="p-access__desc">準備中</dd>
-        </div>
         <div class="p-access__row p-access__row--contact">
           <dt class="p-access__term">お問い合わせ</dt>
           <dd class="p-access__desc">
-            <a class="c-btn c-btn--outline-main" href="#">
-              <span class="c-btn__text">お問い合わせフォームへ</span>
-              <span class="c-btn__icon" aria-hidden="true"></span>
-            </a>
+            <div class="p-access__contact-buttons">
+              <a class="c-btn c-btn--outline-main" href="#">
+                <span class="c-btn__text">お問い合わせフォームへ</span>
+                <span class="c-btn__icon" aria-hidden="true"></span>
+              </a>
+              <a class="c-btn c-btn--outline-line c-btn--icon-left" href="#">
+                <span class="c-btn__lead-icon c-btn__lead-icon--line" aria-hidden="true"></span>
+                <span class="c-btn__text">LINEで相談する</span>
+                <span class="c-btn__icon" aria-hidden="true"></span>
+              </a>
+            </div>
           </dd>
         </div>
       </dl>
@@ -1103,6 +1110,10 @@
 </section>
 
 </main>
+
+<button class="c-page-top js-page-top" type="button" aria-label="ページ上部へ戻る">
+  <span class="c-page-top__icon" aria-hidden="true"></span>
+</button>
 
 <!-- =====================================================
      footer.php

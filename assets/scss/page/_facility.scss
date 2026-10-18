@@ -159,6 +159,10 @@
 
   // Smartphone ----------------------------------------
   @include sp {
+    .c-heading__ja {
+      margin-top: -20px;
+    }
+
     padding: 56px 0 72px;
 
     &__lead {
@@ -217,6 +221,14 @@
       align-items: center;
       gap: 16px;
       margin-top: 48px;
+    }
+
+    &__illust {
+      display: block;
+      bottom: -84px;
+      left: auto;
+      right: 12px;
+      width: 105px;
     }
   }
 }

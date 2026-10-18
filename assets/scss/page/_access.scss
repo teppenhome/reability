@@ -86,6 +86,13 @@
     max-width: 344px;
   }
 
+  &__contact-buttons {
+    display: grid;
+    gap: 12px;
+    width: 100%;
+    max-width: 344px;
+  }
+
   @include tb {
     padding: 80px 0 96px;
 
@@ -109,6 +116,10 @@
   }
 
   @include sp {
+    .c-heading__ja {
+      margin-top: -20px;
+    }
+
     padding: 56px 0 72px;
 
     &__content {

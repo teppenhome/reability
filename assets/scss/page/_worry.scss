@@ -75,6 +75,7 @@
     }
 
     &::after {
+      z-index: 0;
       left: 0;
       top: -10px;
       color: $color-white;
@@ -92,6 +93,8 @@
   }
 
   &__points {
+    position: relative;
+    z-index: 2;
     display: grid;
     gap: 13px;
 
@@ -198,8 +201,9 @@
       }
 
       &::after {
-        left: 12px;
-        top: 12px;
+        left: -12px;
+        top: -18px;
+        font-size: 115px;
       }
     }
 

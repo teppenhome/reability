@@ -51,6 +51,20 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
+  // --- スマホ用ページトップボタン -----------------------------
+  var pageTop = document.querySelector('.js-page-top');
+  if (pageTop) {
+    var updatePageTop = function () {
+      pageTop.classList.toggle('is-visible', window.scrollY > 400);
+    };
+
+    updatePageTop();
+    window.addEventListener('scroll', updatePageTop, { passive: true });
+    pageTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   // --- data-anim(画面内に入ったら .is-inview) -----------------
   var animTargets = document.querySelectorAll('[data-anim]');
   if (animTargets.length) {
@@ -165,5 +179,36 @@
     }, { passive: true });
     columnScroller.addEventListener('scrollend', loopIfNeeded);
     window.addEventListener('resize', loopIfNeeded);
+  }
+
+  // --- VOICE スライダーの左右操作 ------------------------------
+  var voiceScroller = document.querySelector('.js-voice-scroller');
+  var voicePrev = document.querySelector('.js-voice-prev');
+  var voiceNext = document.querySelector('.js-voice-next');
+
+  if (voiceScroller && voicePrev && voiceNext) {
+    var voiceStep = function () {
+      var item = voiceScroller.querySelector('.p-voice__item');
+      var list = voiceScroller.querySelector('.p-voice__list');
+      if (!item || !list) return 240;
+      var gap = parseFloat(window.getComputedStyle(list).gap) || 24;
+      return item.offsetWidth + gap;
+    };
+
+    var updateVoiceArrows = function () {
+      var max = voiceScroller.scrollWidth - voiceScroller.clientWidth;
+      voicePrev.disabled = voiceScroller.scrollLeft <= 1;
+      voiceNext.disabled = voiceScroller.scrollLeft >= max - 1;
+    };
+
+    voicePrev.addEventListener('click', function () {
+      voiceScroller.scrollBy({ left: -voiceStep(), behavior: 'smooth' });
+    });
+    voiceNext.addEventListener('click', function () {
+      voiceScroller.scrollBy({ left: voiceStep(), behavior: 'smooth' });
+    });
+    voiceScroller.addEventListener('scroll', updateVoiceArrows, { passive: true });
+    window.addEventListener('resize', updateVoiceArrows);
+    updateVoiceArrows();
   }
 })();

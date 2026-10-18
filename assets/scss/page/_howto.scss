@@ -134,11 +134,23 @@
 
   // Smartphone ----------------------------------------
   @include sp {
-    padding: 56px 0 64px;
+    .c-heading__ja {
+      margin-top: -20px;
+    }
+
+    padding: 112px 0 64px;
 
     &__lead {
       margin-top: 16px;
       font-size: 14px;
+    }
+
+    &__illust {
+      display: block;
+      top: -20px;
+      left: auto;
+      right: 124px;
+      width: 112px;
     }
 
     // 横並びカード(サムネイル左 / テキスト右)

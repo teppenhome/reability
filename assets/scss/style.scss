@@ -17,6 +17,7 @@
 @use 'component/arrows';
 @use 'component/card';
 @use 'component/schedule-link';
+@use 'component/page-top';
 
 // layout(component の上書きを含むため component の後に読み込む)
 @use 'layout/container';

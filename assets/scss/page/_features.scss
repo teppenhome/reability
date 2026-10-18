@@ -125,6 +125,10 @@
   @include sp {
     padding: 56px 0 72px;
 
+    .c-heading__ja {
+      margin-top: -20px;
+    }
+
     &__list {
       gap: 32px;
       margin-top: 24px;

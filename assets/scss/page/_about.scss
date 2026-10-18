@@ -34,6 +34,10 @@
     margin-top: -36px;
     padding: 24px 0 64px;
 
+    &__pill {
+      margin-top: 24px;
+    }
+
     &__divider {
       margin-top: 56px;
     }
@@ -300,7 +304,7 @@
   }
 
   @include sp {
-    margin-top: 0;
+    margin-top: 40px;
     padding-top: 0;
 
     &__stage {
@@ -309,7 +313,7 @@
     }
 
     &__bleed {
-      height: 8vw;
+      height: 3vw;
     }
 
     &__circle--left {
@@ -323,6 +327,7 @@
       left: auto;
       right: 4vw;
       top: 0;
+      transform: translateY(-40px);
     }
 
     &__circle--bottom-right {
@@ -331,6 +336,7 @@
       right: -42vw;
       top: auto;
       bottom: -32vw;
+      transform: translateY(-20px);
     }
 
     &__card {
@@ -425,9 +431,9 @@
 
     &__circle {
       top: -8%;
-      left: 50%;
+      left: -38vw;
       width: min(92vw, 400px);
-      translate: -50% 0;
+      translate: 0 820px;
     }
 
     &__photo {
@@ -576,8 +582,23 @@
     }
 
     &__message {
-      padding: 22px 20px;
+      margin-top: 64px;
+      padding: 40px 24px;
+      border-radius: 20px;
+      background: linear-gradient(101deg, $color-cyan 0%, #b6e3a4 100%);
       font-size: 15px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -28px;
+        left: 50%;
+        width: 48px;
+        height: 30px;
+        background: #83d3c5;
+        clip-path: polygon(50% 0, 100% 100%, 0 100%);
+        transform: translateX(-50%);
+      }
     }
   }
 }

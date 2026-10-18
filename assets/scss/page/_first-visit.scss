@@ -154,9 +154,13 @@
   @include sp {
     padding-top: 56px;
 
+    .c-heading__ja {
+      margin-top: -20px;
+    }
+
     &__steps {
       grid-template-columns: 1fr;
-      gap: 36px;
+      gap: 52px;
       margin-top: 28px;
     }
 
@@ -166,10 +170,10 @@
       display: block;
       top: auto;
       right: auto;
-      bottom: -34px;
+      bottom: -48px;
       left: 50%;
-      width: 28px;
-      height: 42px;
+      width: 44px;
+      height: 60px;
       transform: translateX(-50%) rotate(90deg);
     }
 
@@ -203,14 +207,31 @@
     }
 
     &__oval {
+      justify-content: center;
       order: 1;
       width: 100%;
       height: auto;
       margin: 0;
       padding: 32px 36px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        left: calc(50% + 30px);
+        bottom: -16px;
+        width: 56px;
+        height: 28px;
+        background: url('../images/bubble-tail.svg') no-repeat center / 100% 100%;
+        transform: rotate(140deg);
+        transform-origin: center;
+        pointer-events: none;
+      }
     }
 
     &__help-text {
+      width: 100%;
+      margin-inline: auto;
       font-size: 14px;
       text-align: center;
     }

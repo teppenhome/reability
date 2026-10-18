@@ -237,7 +237,11 @@
 
   // Smartphone: 2列から1列 ------------------------------
   @include sp {
-    padding: 56px 0 72px;
+    padding: 56px 0 96px;
+
+    .c-heading__ja {
+      margin-top: -20px;
+    }
 
     &__list {
       flex-direction: column;
@@ -264,7 +268,11 @@
     }
 
     &__illust {
-      display: none;
+      display: block;
+      top: -44px;
+      left: auto;
+      right: 12px;
+      width: 175px;
     }
 
     &__ticker {

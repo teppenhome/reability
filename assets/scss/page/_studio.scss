@@ -123,7 +123,16 @@
 
   // Smartphone ----------------------------------------
   @include sp {
-    padding: 56px 0 72px;
+    padding: 56px 0 96px;
+
+    .c-heading__en {
+      font-size: clamp(36px, 12vw, 48px);
+      white-space: nowrap;
+    }
+
+    .c-heading__ja {
+      margin-top: -20px;
+    }
 
     &__lead {
       margin-top: 20px;
@@ -190,7 +199,11 @@
     }
 
     &__illust {
-      display: none;
+      display: block;
+      left: auto;
+      right: 16px;
+      bottom: -76px;
+      width: 150px;
     }
   }
 }

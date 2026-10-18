@@ -24,11 +24,23 @@
     line-height: 1.7;
   }
 
+  &__slider {
+    position: relative;
+    margin-top: 64px;
+  }
+
   &__scroller {
     display: flex;
-    justify-content: center;
-    margin-top: 64px;
-    overflow: hidden;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 0 max(72px, calc((100vw - 1120px) / 2)) 16px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &__list {
@@ -40,11 +52,55 @@
   &__item {
     flex: none;
     width: 217px;
+    scroll-snap-align: start;
     text-align: center;
 
     // 互い違いに段差をつける
     &:nth-child(odd) {
       margin-top: 56px;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba($color-white, 0.94);
+    box-shadow: $shadow-btn;
+    transform: translateY(-50%);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 11px;
+      height: 11px;
+      border-top: 2px solid $color-main;
+      border-right: 2px solid $color-main;
+    }
+
+    &--prev {
+      left: 20px;
+
+      &::before {
+        transform: translate(-35%, -50%) rotate(-135deg);
+      }
+    }
+
+    &--next {
+      right: 20px;
+
+      &::before {
+        transform: translate(-65%, -50%) rotate(45deg);
+      }
+    }
+
+    &:disabled {
+      opacity: 0.35;
     }
   }
 
@@ -110,6 +166,10 @@
   }
 
   @include sp {
+    .c-heading__ja {
+      margin-top: -20px;
+    }
+
     padding: 56px 0 64px;
 
     &__lead {
@@ -117,10 +177,27 @@
       font-size: 14px;
     }
 
-    &__scroller {
+    &__slider {
       margin-top: 32px;
+    }
+
+    &__scroller {
+      margin-top: 0;
       padding-inline: 20px;
       scroll-padding-inline: 20px;
+    }
+
+    &__arrow {
+      width: 42px;
+      height: 42px;
+
+      &--prev {
+        left: 6px;
+      }
+
+      &--next {
+        right: 6px;
+      }
     }
 
     &__item {

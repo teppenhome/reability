@@ -105,6 +105,12 @@
       height: 48px;
       border-radius: 50%;
       background: rgba($color-white, 0.16);
+
+      // 全体共通のピンク色フォーカス枠をハンバーガーには表示しない
+      &:focus-visible {
+        outline: none;
+        background: rgba($color-white, 0.28);
+      }
     }
 
     // ハンバーガーの3本線
