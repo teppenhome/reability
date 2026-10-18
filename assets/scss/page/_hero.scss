@@ -373,6 +373,10 @@
       --peak: 105vw;
     }
 
+    &__line--5 {
+      display: none;
+    }
+
     &__inner {
       display: block;
       align-items: stretch;

@@ -1239,6 +1239,9 @@ body.is-drawer-open {
   .p-hero__line {
     --peak: 105vw;
   }
+  .p-hero__line--5 {
+    display: none;
+  }
   .p-hero__inner {
     display: block;
     align-items: stretch;
